@@ -1,0 +1,19 @@
+# Hand-written questions a candidate can ask at the end. {org}/{role} are filled in; nothing here
+# claims any fact about the organization.
+base:
+  - text: "What does success look like in the first three months for someone in this role?"
+    why: "Shows you care about results and gives you concrete expectations."
+  - text: "What does a typical week look like for the {role}?"
+    why: "Reveals the actual day-to-day work."
+  - text: "What is the biggest challenge the team is working on right now?"
+    why: "Invites them to talk about real problems, and lets you connect your skills."
+  - text: "How do new hires or interns get feedback and mentorship?"
+    why: "Signals that you want to learn and improve."
+  - text: "What do you enjoy most about working at {org}?"
+    why: "A personal question that builds rapport and often gets an honest answer."
+  - text: "Who would I work with most closely, and how does the team collaborate?"
+    why: "Shows interest in teamwork and clarifies the reporting structure."
+  - text: "What are the next steps in the process, and when can I expect to hear back?"
+    why: "A polite, practical close. Always safe to ask."
+  - text: "Is there anything about my background that you would like me to clarify?"
+    why: "Gives you one last chance to address any doubts."

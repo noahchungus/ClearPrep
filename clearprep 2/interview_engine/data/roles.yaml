@@ -1,0 +1,26 @@
+# Job-title keyword rules -> role family. The family with the most keyword hits wins;
+# longer/more specific phrases score higher. No match -> "general".
+families:
+  software:
+    label: Software / IT
+    keywords: [software, developer, engineer, engineering, programmer, programming, web, frontend, front-end, backend, back-end, full stack, full-stack, devops, sre, mobile, android, ios, qa, quality assurance, sdet, application, cloud, "it support", "help desk", helpdesk, systems, platform, embedded, game]
+  data:
+    label: Data / Analytics
+    keywords: [data, analytics, "data analyst", "business intelligence", bi, "machine learning", ml, statistician, statistics, "data science", scientist, insights]
+  cybersecurity:
+    label: Cybersecurity
+    keywords: [security, cybersecurity, cyber, soc, infosec, "information security", penetration, pentest, "incident response", threat, vulnerability, grc, compliance analyst, forensics, "network security"]
+  business:
+    label: Business / Finance
+    keywords: [finance, financial, accounting, accountant, business, banking, banker, investment, audit, auditor, operations, consulting, consultant, "project management", "project manager", "product manager", sales, "account manager", "customer success", procurement, "supply chain", logistics, hr, "human resources", recruiter, administrative]
+  marketing:
+    label: Marketing / Communications
+    keywords: [marketing, brand, social media, content, seo, communications, "public relations", pr, advertising, campaign, copywriter, "digital marketing", growth, community, events, creative, "graphic design", designer]
+  general:
+    label: General
+    keywords: []
+
+# Words in the title that hint at seniority. The app only targets internship / entry level,
+# so this is used to warn if the title looks more senior than that.
+senior_keywords: [senior, sr, lead, principal, staff, director, head, manager, vp, chief]
+internship_keywords: [intern, internship, co-op, coop, trainee, apprentice, student, summer analyst]

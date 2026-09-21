@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Mock interview: {{ view.profile.role }} at {{ view.profile.org }}{% endblock %}
+{% block wrapcls %}narrow{% endblock %}
+{% block content %}
+{% set pr = view.profile %}
+<div class="card">
+  <div class="row" style="justify-content:space-between">
+    <div><h2 style="margin:0">{{ pr.role }} <span class="muted">at {{ pr.org }}</span></h2>
+    <div class="q-meta"><span class="pill">{{ pr.family_label }}{% if pr.family_source == 'title' %} · from title{% elif pr.family_source == 'job description' %} · from job description{% elif pr.family_source == 'user' %} · your choice{% endif %}</span>
+    <span class="pill">{{ pr.interview_type }}</span><span class="pill">{{ pr.seniority }}</span>
+    <span class="pill {{ 'good' if pr.ai and ai_available() else '' }}">{% if not pr.ai %}AI coach off{% elif ai_available() %}AI coach on{% else %}AI coach: no key yet{% endif %}</span></div></div>
+  </div>
+  {% for w in pr.warnings %}<div class="notice warn">{{ w }}</div>{% endfor %}
+  {% if pr.skills %}
+  <p class="small muted" style="margin-bottom:6px">Skills found in the job description you pasted (they shape the questions and the “connects to the job” check):</p>
+  <div class="chips">{% for s in pr.skills %}<span class="chip {{ s.kind }}">{{ s.name }}</span>{% endfor %}</div>
+  {% elif pr.has_jd %}<p class="small muted">No known skills were recognised in the pasted description, so questions come from the role family instead.</p>{% endif %}
+</div>
+{% include "_stage.html" %}
+{% endblock %}

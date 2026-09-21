@@ -1,0 +1,74 @@
+<div id="stage" hx-target="#stage" hx-swap="outerHTML">
+{% set v = view %}
+{% set pr = v.profile %}
+<div class="stepper" aria-label="Progress: question {{ [v.index + 1, v.total]|min }} of {{ v.total }}">
+  {% for i in range(v.total) %}<i class="{{ 'done' if i < v.index or v.mode == 'done' else 'now' if i == v.index else '' }}"></i>{% endfor %}
+</div>
+
+{% if error %}<div class="notice err" role="alert">{{ error }}</div>{% endif %}
+
+{% if v.mode == 'asking' %}
+{% set q = v.question %}
+<div class="card">
+  <div class="q-meta">
+    <span>{% if q.stage == 'opener' %}Opening question{% elif q.stage == 'ask_us' %}Closing{% else %}Question {{ v.index }} of {{ v.total - 2 }}{% endif %}</span>
+    <span class="pill">{{ q.type|replace('closer','your questions') }}</span>
+    <span class="timer" id="timer" data-limit="{{ pr.time_limit }}" role="timer" aria-label="Answer timer">0:00</span>
+  </div>
+  <h2 class="question" data-focus tabindex="-1">{{ q.text }}</h2>
+  {% if hint %}<div class="rephrase-hint"><strong>Another way to think about it:</strong> {{ hint }}</div>{% endif %}
+  {% if q.stage == 'ask_us' %}<p class="small muted">Write the 2 to 4 questions you would ask, one per line. Save pay, benefits and time-off questions for later.</p>
+  {% elif pr.seniority == 'internship' and q.profile == 'star' %}<p class="small muted">No work experience to draw on? Class projects, clubs, volunteering, sports and part-time jobs all count.</p>{% endif %}
+  <form id="answer-form" hx-post="/interview/answer" hx-indicator="#busy">
+    <input type="hidden" name="state" value="{{ state_json }}"><input type="hidden" name="duration" value=""><input type="hidden" name="spoken" value="">
+    <label for="answer" class="hint" style="margin-bottom:6px">Your answer <span class="hint">Answer as if speaking, in your own words. Aim for about 1 to 2 minutes.</span></label>
+    <textarea id="answer" name="answer" rows="9" maxlength="4000" placeholder="{% if q.stage == 'ask_us' %}What does success look like in the first three months?&#10;How does the team give interns feedback?{% else %}Type your answer here…{% endif %}"></textarea>
+    <div class="tools">
+      <button class="btn primary" type="submit" data-submit>Submit answer</button>
+      <button class="btn ghost" type="button" hx-post="/interview/rephrase" hx-target="#stage" title="Get a different way to think about this question">Rephrase</button>
+      <button class="btn ghost" type="button" data-speak="{{ q.text }}" hidden>🔊 Read aloud</button>
+      <button class="btn ghost" type="button" data-dictate hidden>🎙 Dictate</button>
+      <button class="btn quiet" type="button" hx-post="/interview/skip" hx-confirm="Skip this question? It won't count toward your report.">Skip</button>
+      <span class="counter" data-counter aria-live="off"></span>
+    </div>
+    <p class="voice-note" data-voice-note hidden>Voice is optional and only starts when you click. In some browsers (Chrome, Edge, Safari) dictation audio is sent to the browser vendor’s speech service. Don’t dictate anything sensitive if that concerns you.</p>
+    <div class="row" style="margin-top:8px"><span id="busy" class="htmx-indicator muted small">Scoring…</span></div>
+  </form>
+</div>
+<div class="row no-print"><form hx-post="/interview/finish" hx-confirm="End the interview now and see your report?"><input type="hidden" name="state" value="{{ state_json }}"><button class="btn quiet" type="submit">End early and see report</button></form></div>
+
+{% elif v.mode == 'followup' %}
+<div class="card">
+  <div class="q-meta"><span>Follow-up</span><span class="timer" id="timer" data-limit="{{ pr.time_limit }}" role="timer">0:00</span></div>
+  <details><summary>Your first answer</summary><div class="body"><div class="answer-box">{{ v.first_answer }}</div></div></details>
+  <h2 class="question followup-card card" style="padding:14px 18px;margin-top:12px" data-focus tabindex="-1">{{ v.followup.text }}</h2>
+  <p class="small muted">{% if v.followup.source == 'ai' %}<span class="pill">Your coach’s question</span> {% endif %}Why this was asked: {{ v.followup.reason }}</p>
+  <form id="answer-form" hx-post="/interview/answer" hx-indicator="#busy">
+    <input type="hidden" name="state" value="{{ state_json }}"><input type="hidden" name="duration" value=""><input type="hidden" name="spoken" value="">
+    <label for="answer" class="hint" style="margin-bottom:6px">Your follow-up answer</label>
+    <textarea id="answer" name="answer" rows="6" maxlength="4000" placeholder="Answer the follow-up directly…"></textarea>
+    <div class="tools">
+      <button class="btn primary" type="submit" data-submit>Submit follow-up</button>
+      <button class="btn ghost" type="button" data-speak="{{ v.followup.text }}" hidden>🔊 Read aloud</button>
+      <button class="btn ghost" type="button" data-dictate hidden>🎙 Dictate</button>
+      <button class="btn quiet" type="button" hx-post="/interview/skip-followup">Skip follow-up</button>
+      <span class="counter" data-counter></span>
+    </div>
+    <p class="voice-note" data-voice-note hidden>Voice is optional. In some browsers dictation audio is sent to the browser vendor’s speech service.</p>
+    <span id="busy" class="htmx-indicator muted small">Scoring…</span>
+  </form>
+</div>
+
+{% elif v.mode == 'feedback' %}
+{% include "_feedback.html" %}
+
+{% else %}
+<div class="card center">
+  <h2 data-focus tabindex="-1">Interview complete</h2>
+  <p>You answered {{ v.answered }} of {{ v.total }} prompts. Your report shows what to fix first and how to drill it.</p>
+  <form method="post" action="/report" hx-disable><input type="hidden" name="state" value="{{ state_json }}">
+    <button class="btn primary" type="submit" {% if v.answered == 0 %}disabled{% endif %}>See my report →</button></form>
+  {% if v.answered == 0 %}<p class="small muted" style="margin-top:10px">You skipped everything, so there is nothing to score yet. <a href="/practice">Start a new interview</a>.</p>{% endif %}
+</div>
+{% endif %}
+</div>

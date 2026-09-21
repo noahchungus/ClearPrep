@@ -1,0 +1,262 @@
+[
+ {
+  "id": "t01",
+  "competency": "leadership",
+  "question": "Tell me about a time you led a project.",
+  "quality": "good",
+  "text": "Our school's food drive was three weeks out and we only had two volunteers signed up. As the new event chair, I had to hit a target of 500 pounds of food. I recruited eight classmates through group chats, mapped collection bins to six buildings, and posted a sign-up sheet in the cafeteria. We collected 640 pounds and the food bank asked us to run it again in spring.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "t02",
+  "competency": "failure",
+  "question": "Tell me about a time you failed.",
+  "quality": "good",
+  "text": "Sophomore year I ran for treasurer of my club and lost the vote. I had assumed my friends would support me, so I never talked to the rest of the members or explained my plans. Afterward I asked three members for honest feedback and they said they did not know me. The next year I introduced myself at every meeting, wrote a one-page budget proposal, and won with 60 percent of the vote. What I learned is that you have to earn support instead of assuming it.",
+  "star": {
+   "situation": 1,
+   "task": 0,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "t03",
+  "competency": "teamwork",
+  "question": "Describe working with a difficult teammate.",
+  "quality": "good",
+  "text": "In a marketing class, I was paired with someone who never replied to messages, and our pitch was due in ten days. I wanted to finish without a last-minute scramble. I called him instead of texting, learned he was working night shifts, and suggested we work on shared documents at times that fit his schedule. He wrote the market section over the weekend and we earned a 94 on the pitch.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "t04",
+  "competency": "conflict",
+  "question": "Tell me about a time you had to handle a customer complaint.",
+  "quality": "good",
+  "text": "Working the register at a coffee shop this summer, a customer yelled that her order had been wrong three times in a row. I listened without interrupting, apologized, and remade the drink myself while she watched. Then I told my manager so we could check the order screen. She left a five-star review that mentioned me by name.",
+  "star": {
+   "situation": 1,
+   "task": 0,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "t05",
+  "competency": "deadlines",
+  "question": "How do you handle deadlines?",
+  "quality": "mid",
+  "text": "At my internship last summer, my supervisor asked for a dashboard by Friday, and on Wednesday the data was still messy. I cleaned the data in Python on Wednesday night, sketched the charts on paper, and built them Thursday, sending a draft in the afternoon so she could give me feedback.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 0
+  }
+ },
+ {
+  "id": "t06",
+  "competency": "initiative",
+  "question": "Tell me about something you did without being asked.",
+  "quality": "weak",
+  "text": "I am someone who takes initiative all the time. If I see something that needs to be done I just do it. I think that is a really important quality to have in any workplace.",
+  "star": {
+   "situation": 0,
+   "task": 0,
+   "action": 0,
+   "result": 0
+  }
+ },
+ {
+  "id": "t07",
+  "competency": "teamwork",
+  "question": "Tell me about a group experience.",
+  "quality": "weak",
+  "text": "So there was this group thing in my English class. We did a lot of stuff together and it was pretty good, I guess. We got it done and everyone was happy.",
+  "star": {
+   "situation": 1,
+   "task": 0,
+   "action": 0,
+   "result": 1
+  }
+ },
+ {
+  "id": "t08",
+  "competency": "problem_solving",
+  "question": "Tell me about troubleshooting something.",
+  "quality": "good",
+  "text": "My family's home wifi kept dropping every evening and my parents were about to buy a new router. I decided to find the cause first. I checked the router logs, saw the drops matched the time my brother started streaming, then tested by moving his console onto a wired connection. The drops stopped completely, so we saved the 120 dollars for a new router.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "t09",
+  "competency": "adaptability",
+  "question": "Tell me about a time you worked outside your comfort zone.",
+  "quality": "mid",
+  "text": "I am very shy, so when my professor assigned each student a five-minute presentation in front of the whole class I was terrified. I practiced my slides in front of my roommate four times, recorded myself on my phone to fix my pacing, and went to office hours to ask how to open strongly.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 0
+  }
+ },
+ {
+  "id": "t10",
+  "competency": "communication",
+  "question": "Tell me about giving a presentation.",
+  "quality": "good",
+  "text": "As part of my public speaking class, I had to explain how vaccines work to an audience of classmates with no biology background. My goal was to make it understandable in six minutes. I built one slide around an analogy of a fire drill, cut every technical term I could, and rehearsed with a timer until I hit six minutes. Afterwards my instructor said it was the clearest talk of the day and I got a 98.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "t11",
+  "competency": "ethics",
+  "question": "Tell me about an ethical dilemma.",
+  "quality": "weak",
+  "text": "Ethics are really important to me and I always try to do the right thing. Honesty is the best policy and I would never cheat or lie in a work setting.",
+  "star": {
+   "situation": 0,
+   "task": 0,
+   "action": 0,
+   "result": 0
+  }
+ },
+ {
+  "id": "t12",
+  "competency": "deadlines",
+  "question": "Tell me about a stressful week.",
+  "quality": "mid",
+  "text": "Last winter I was working twenty hours a week while taking five classes. My plan was to keep my grades up without quitting. I bought a paper planner, put every deadline and shift on one page, and studied in the same two-hour block after work every night.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 0
+  }
+ },
+ {
+  "id": "t13",
+  "competency": "leadership",
+  "question": "Tell me about motivating a team.",
+  "quality": "good",
+  "text": "During a hackathon, my team of four was exhausted at 2 a.m. and ready to quit with our demo half working. As team lead, I needed to get us to a working demo by the 9 a.m. deadline. I reorganized the remaining tasks into a checklist, sent two people to sleep for an hour each while the others kept going, and cut a feature we would not finish. We presented a working demo and placed third out of thirty teams.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "t14",
+  "competency": "failure",
+  "question": "Tell me about a time you got negative feedback.",
+  "quality": "mid",
+  "text": "On a research paper, my professor told me my argument was buried in the third page and that my sources were weak. I rewrote the thesis into the first paragraph, replaced four of the sources, and asked the writing center to review the new draft. I now put my main point in the opening line of everything I write.",
+  "star": {
+   "situation": 1,
+   "task": 0,
+   "action": 1,
+   "result": 0
+  }
+ },
+ {
+  "id": "t15",
+  "competency": "initiative",
+  "question": "Describe a time you improved a process.",
+  "quality": "good",
+  "text": "The tutoring center where I worked signed students in on paper, and staff spent Fridays typing the sheets into a spreadsheet. I offered to build a simple sign-in form for the tablet at the front desk. I built it in Google Forms in an afternoon and trained the staff in ten minutes. The Friday data entry, about three hours a week, went away entirely.",
+  "star": {
+   "situation": 1,
+   "task": 0,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "t16",
+  "competency": "teamwork",
+  "question": "How do you work with others?",
+  "quality": "weak",
+  "text": "I work well with others. I am a good listener and I like collaborating because different perspectives lead to better results. I get along with almost everyone.",
+  "star": {
+   "situation": 0,
+   "task": 0,
+   "action": 0,
+   "result": 0
+  }
+ },
+ {
+  "id": "t17",
+  "competency": "conflict",
+  "question": "Tell me about disagreeing with a manager.",
+  "quality": "mid",
+  "text": "At my job at the library, my supervisor wanted to reorganize the shelves by color for a display, and I thought patrons would struggle to find books. I asked if I could show her the last month's circulation questions, and I brought a written list of the twelve most common ones. She agreed to keep the sections and do the color display on a separate table.",
+  "star": {
+   "situation": 1,
+   "task": 0,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "t18",
+  "competency": "adaptability",
+  "question": "Tell me about when you had to change your plan.",
+  "quality": "good",
+  "text": "In my second year the community college cancelled the statistics course I needed for my transfer plan the week before classes started. I had to find a replacement fast to stay on schedule. I emailed my advisor the same day, found an online section at another college that transferred, and enrolled before the deadline. I stayed on track for my transfer date and now double-check course offerings each term.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "t19",
+  "competency": "problem_solving",
+  "question": "Tell me about a time you used data.",
+  "quality": "mid",
+  "text": "For my statistics project I wanted to know why attendance at our club meetings was dropping. I pulled the sign-in sheets from the last semester, graphed attendance by weekday, and compared it to the class schedule.",
+  "star": {
+   "situation": 0,
+   "task": 1,
+   "action": 1,
+   "result": 0
+  }
+ },
+ {
+  "id": "t20",
+  "competency": "motivation",
+  "question": "Tell me about a proud moment.",
+  "quality": "weak",
+  "text": "Honestly there are many things I am proud of, like finishing school and my family. It is hard to pick just one because I have done a lot of different things.",
+  "star": {
+   "situation": 0,
+   "task": 0,
+   "action": 0,
+   "result": 0
+  }
+ }
+]

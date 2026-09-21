@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}How scoring works · ClearPrep{% endblock %}
+{% block wrapcls %}narrow{% endblock %}
+{% block content %}
+<section class="hero"><h1>How scoring works</h1>
+<p>ClearPrep has <strong>two layers</strong>. The <strong>numbers</strong> come from a rule-based scorer with no AI in it: named checks over word lists and patterns that you can read below (the exact lists it runs). The <strong>written coaching</strong> comes from an AI coach, which reads your answer and those findings and talks you through them.</p></section>
+
+<div class="card">
+  <h2>Where the AI coach fits</h2>
+  <ul class="plain">
+    <li>It writes your feedback, follow-up questions, and debrief. <strong>It never changes your scores.</strong></li>
+    <li>It can be wrong, so check its advice against your highlighted answer.</li>
+    <li>When it’s on, your answers and any pasted job text go to a third-party AI service. This app stores nothing. Turn it off on the practice page to stay fully local.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>The formula</h2>
+  <p>Each answer is scored on five dimensions from 0 to 100. A dimension is a list of <em>checks</em>. Each check has a maximum number of points, earns some of them, and records why and which words of yours triggered it:</p>
+  <p><code>dimension score = 100 × (points earned ÷ points possible)</code></p>
+  <p>Some checks can only subtract (vague wording, generic “why us” phrases, asking about pay too early). The overall score is a weighted average:</p>
+  <div class="chips">{% for d, w in s.weights.items() %}<span class="chip">{{ DIM_LABELS[d] }} · {{ w }}%</span>{% endfor %}</div>
+</div>
+
+<div class="card">
+  <h2>What limits it</h2>
+  <ul class="plain">
+    <li>Scores measure structure and delivery, not whether your story is impressive or a technical answer is correct.</li>
+    <li>The checks look for patterns, so unusual phrasing can be missed. See the measured accuracy below.</li>
+    <li>Company details come only from text you paste. Nothing is looked up.</li>
+  </ul>
+</div>
+
+{% if evalr %}
+<div class="card">
+  <h2>Measured accuracy</h2>
+  <p>The STAR detector was evaluated on a hand-labeled set of {{ evalr.test.n }} <strong>held-out</strong> sample answers (the rules were tuned on a separate {{ evalr.dev.n }}-answer development set, so this held-out result is the honest one).</p>
+  <div class="table-scroll"><table><thead><tr><th>STAR part</th><th>Precision</th><th>Recall</th><th>F1</th></tr></thead><tbody>
+    {% for part, m in evalr.test.per_part.items() %}<tr><td>{{ part|capitalize }}</td><td>{{ '%.2f' % m.precision }}</td><td>{{ '%.2f' % m.recall }}</td><td>{{ '%.2f' % m.f1 }}</td></tr>{% endfor %}
+    <tr><td><strong>Micro average</strong></td><td>{{ '%.2f' % evalr.test.micro.precision }}</td><td>{{ '%.2f' % evalr.test.micro.recall }}</td><td>{{ '%.2f' % evalr.test.micro.f1 }}</td></tr>
+  </tbody></table></div>
+  <p class="small muted">Good-vs-weak separation: mean overall score {{ '%.0f' % evalr.test.separation.good_mean }} for answers labeled good vs {{ '%.0f' % evalr.test.separation.weak_mean }} for weak; {{ '%.0f' % (100 * evalr.test.separation.pairwise_accuracy) }}% of good/weak pairs ranked correctly. The sample answers were written by the project author, not collected from real candidates.</p>
+</div>
+{% endif %}
+
+<div class="card">
+  <h2>STAR detection</h2>
+  <p>STAR = Situation, Task, Action, Result. The detector looks for <strong>cue phrases</strong> (regular expressions) and checks <strong>where in the answer</strong> they appear: situation cues count fully in the first {{ (s.cues.situation.zone[1] * 100)|int }}% of the answer, result cues in the last {{ ((1 - s.cues.result.zone[0]) * 100)|int }}%. A cue outside its expected zone counts half. A part is “present” when the weighted cue count reaches {{ s.present_threshold|int }}; a lower non-zero weight is “weak”. Actions also get credit for first-person action verbs (“I built…”); results get credit for a number in the closing half.</p>
+  <p>Points: {% for k, w in s.star_weights.items() %}{{ k|capitalize }} {{ w }}{{ ', ' if not loop.last }}{% endfor %} (out of 100 for structure).</p>
+  {% for part, c in s.cues.items() %}
+  <details><summary>{{ part|capitalize }} cue patterns ({{ c.patterns|length }})</summary><div class="body"><ul class="pattern-list plain">{% for pat in c.patterns %}<li><code>{{ pat }}</code></li>{% endfor %}</ul></div></details>
+  {% endfor %}
+</div>
+
+<div class="card">
+  <h2>Checks by answer type</h2>
+  <p>The app picks a scoring profile from the question type, so a technical question isn’t judged like a story. Numbers are the maximum points for each check.</p>
+  {% for prof in s.profiles %}
+  <details><summary>{{ prof.label }} <span class="pill">ideal {{ prof.ideal[0] }}–{{ prof.ideal[1] }} words</span></summary><div class="body">
+    {% for dim in prof.dims %}<p style="margin:10px 0 4px"><strong>{{ DIM_LABELS[dim.name] }}</strong></p><ul class="plain">{% for c in dim.checks %}<li>{{ c.label }} <span class="muted">({{ '%g' % c.possible }})</span></li>{% endfor %}</ul>{% endfor %}
+    {% if prof.deductions %}<p class="small muted">Can subtract points: {{ prof.deductions|join(', ') }}.</p>{% endif %}
+  </div></details>
+  {% endfor %}
+  <p class="small muted">Speaking pace ({{ s.ideal_wpm[0] }}–{{ s.ideal_wpm[1] }} words per minute) is only scored when you dictate an answer with the microphone, so the timing reflects speech rather than typing.</p>
+</div>
+
+<div class="card">
+  <h2>Word lists in use</h2>
+  {% for name, words in s.lexicons.items() %}<details><summary>{{ name }} ({{ words|length }})</summary><div class="body"><div class="chips">{% for w in words %}<span class="chip">{{ w }}</span>{% endfor %}</div></div></details>{% endfor %}
+</div>
+
+<div class="card">
+  <h2>Follow-up rules</h2>
+  <p>After an answer the coach may ask <em>one</em> follow-up, chosen by the first rule below that matches (highest priority first).</p>
+  <div class="table-scroll"><table><thead><tr><th>#</th><th>Trigger</th><th>Follow-up</th></tr></thead><tbody>
+  {% for r in rules %}<tr><td>{{ loop.index }}</td><td>{{ r.reason }}</td><td>“{{ r.text }}”</td></tr>{% endfor %}
+  </tbody></table></div>
+</div>
+{% endblock %}

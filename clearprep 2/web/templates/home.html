@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block title %}ClearPrep: practice the interview you actually have{% endblock %}
+{% block bodyclass %}page-home{% endblock %}
+
+{% block hero %}
+<section class="hero-band" aria-labelledby="home-title">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div id="countdown" class="countdown-pill" role="status" hidden><span data-days></span></div>
+      <h1 id="home-title">Hello! Let’s get you interview-ready.</h1>
+      <p>Enter your role, practice real questions, and get honest, personal coaching on every answer.</p>
+      <div class="row hero-actions">
+        <a class="btn light" href="/practice">Start practicing <span aria-hidden="true">→</span></a>
+        <a class="btn outline-light" href="/prep">Build a prep sheet</a>
+      </div>
+    </div>
+
+    <div class="robot-stage">
+      <svg class="robot" viewBox="0 0 290 262" role="img" aria-label="A friendly round white robot dog with small folded ears, waving hello. It gets excited when you point at it.">
+        <defs>
+          <radialGradient id="rb-body" cx="36%" cy="28%" r="85%">
+            <stop offset="0" stop-color="#ffffff"/><stop offset=".62" stop-color="#f6f9fc"/><stop offset="1" stop-color="#d5e0ee"/>
+          </radialGradient>
+          <linearGradient id="rb-face" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#12305c"/><stop offset="1" stop-color="#071b38"/>
+          </linearGradient>
+          <linearGradient id="rb-ear-fill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#cfdbeb"/><stop offset="1" stop-color="#9db3cf"/>
+          </linearGradient>
+          <clipPath id="rb-clip"><circle cx="135" cy="142" r="87"/></clipPath>
+          <!-- a small folded dog ear: one triangle, tip flopped outward and down -->
+          <g id="rb-ear"><path d="M117 57 L79 68 L52 108 Z" fill="url(#rb-ear-fill)" stroke="#8aa1bf" stroke-width="6" stroke-linejoin="round"/></g>
+        </defs>
+
+        <ellipse class="rb-shadow" cx="135" cy="246" rx="66" ry="9" fill="#071b38" opacity=".28"/>
+
+        <g class="rb-bob">
+          <!-- the tail sits behind the body -->
+          <g class="rb-tail">
+            <path d="M206 198 C236 204 260 190 263 164" fill="none" stroke="#b9c9dd" stroke-width="18" stroke-linecap="round"/>
+            <path d="M206 198 C236 204 260 190 263 164" fill="none" stroke="url(#rb-body)" stroke-width="14" stroke-linecap="round"/>
+          </g>
+
+          <!-- antenna -->
+          <line x1="135" y1="50" x2="135" y2="26" stroke="#cfdbe9" stroke-width="7" stroke-linecap="round"/>
+          <circle class="rb-beacon" cx="135" cy="20" r="9" fill="#ffd166" stroke="#f0b93a" stroke-width="2"/>
+
+          <!-- feet -->
+          <ellipse cx="104" cy="232" rx="23" ry="11" fill="url(#rb-body)" stroke="#cbd8e8" stroke-width="2"/>
+          <ellipse cx="166" cy="232" rx="23" ry="11" fill="url(#rb-body)" stroke="#cbd8e8" stroke-width="2"/>
+
+          <!-- resting arm (left) -->
+          <line x1="52" y1="158" x2="42" y2="196" stroke="#cbd8e8" stroke-width="30" stroke-linecap="round"/>
+          <line x1="52" y1="158" x2="42" y2="196" stroke="url(#rb-body)" stroke-width="26" stroke-linecap="round"/>
+
+          <!-- round body -->
+          <circle cx="135" cy="142" r="88" fill="url(#rb-body)" stroke="#cbd8e8" stroke-width="2.5"/>
+          <ellipse cx="98" cy="86" rx="26" ry="14" fill="#fff" opacity=".7" transform="rotate(-28 98 86)"/>
+
+          <!-- folded ears: small triangles lying on the head, tips flopped down the sides -->
+          <g class="rb-ear-l"><use href="#rb-ear"/></g>
+          <g class="rb-ear-r"><use href="#rb-ear" transform="translate(270 0) scale(-1 1)"/></g>
+
+          <!-- collar and tag -->
+          <g clip-path="url(#rb-clip)"><path d="M40 178 Q135 226 230 178" fill="none" stroke="#3f7ac3" stroke-width="10"/></g>
+          <circle cx="135" cy="210" r="9" fill="#ffd166" stroke="#f0b93a" stroke-width="2"/><circle cx="132" cy="207" r="2.6" fill="#fff" opacity=".85"/>
+
+          <!-- face screen -->
+          <ellipse cx="135" cy="128" rx="60" ry="44" fill="url(#rb-face)" stroke="#a9bdd6" stroke-width="3"/>
+          <g class="rb-eyes-open">
+            <g class="rb-eyes">
+              <circle class="rb-eye" cx="112" cy="117" r="10" fill="#8fd6ff"/>
+              <circle class="rb-eye" cx="158" cy="117" r="10" fill="#8fd6ff"/>
+              <circle cx="115" cy="113" r="3.2" fill="#fff"/><circle cx="161" cy="113" r="3.2" fill="#fff"/>
+            </g>
+          </g>
+          <g class="rb-eyes-happy" fill="none" stroke="#8fd6ff" stroke-width="5" stroke-linecap="round">
+            <path d="M102 122 Q112 108 122 122"/><path d="M148 122 Q158 108 168 122"/>
+          </g>
+          <!-- dog nose and mouth -->
+          <path d="M125 131 Q135 126 145 131 Q143 141 135 145 Q127 141 125 131 Z" fill="#eaf5ff"/><ellipse cx="131" cy="131" rx="3" ry="1.6" fill="#fff"/>
+          <path d="M135 145 L135 150 M135 150 Q128 158 120 152 M135 150 Q142 158 150 152" fill="none" stroke="#8fd6ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="rb-tongue" d="M129 153 Q135 157 141 153 Q142 168 135 168 Q128 168 129 153 Z" fill="#ff8fa8"/>
+          <circle cx="94" cy="139" r="7" fill="#ff9fb5" opacity=".5"/><circle cx="176" cy="139" r="7" fill="#ff9fb5" opacity=".5"/>
+
+          <!-- waving arm (right); pivots at the shoulder -->
+          <g class="rb-wave">
+            <line x1="213" y1="150" x2="246" y2="90" stroke="#cbd8e8" stroke-width="30" stroke-linecap="round"/>
+            <line x1="213" y1="150" x2="246" y2="90" stroke="url(#rb-body)" stroke-width="26" stroke-linecap="round"/>
+            <circle cx="249" cy="84" r="19" fill="url(#rb-body)" stroke="#cbd8e8" stroke-width="2.5"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="home-intro" data-reveal>
+  <p class="eyebrow">What it does</p>
+  <h2>A mock interview built around your job.</h2>
+  <p class="lead">Tell ClearPrep about the role. It asks the questions, then coaches you on every answer.</p>
+  <a class="scroll-cue" href="#how" aria-label="Scroll to how it works"><span aria-hidden="true">↓</span> See how it works</a>
+</section>
+
+<section id="how" class="home-steps" aria-labelledby="how-title">
+  <h2 id="how-title" class="sr-only">How it works</h2>
+  <div class="steps-grid">
+    <article class="step" data-reveal style="--d:0s">
+      <span class="step-num" aria-hidden="true">1</span>
+      <h3>Enter the role</h3>
+      <p>Add the company, position, and job posting so every question fits.</p>
+    </article>
+    <article class="step" data-reveal style="--d:.08s">
+      <span class="step-num" aria-hidden="true">2</span>
+      <h3>Answer real questions</h3>
+      <p>One at a time, with follow-ups that build on what you said.</p>
+    </article>
+    <article class="step" data-reveal style="--d:.16s">
+      <span class="step-num" aria-hidden="true">3</span>
+      <h3>Get coached</h3>
+      <p>See your scores, then read your AI coach’s notes on what to fix.</p>
+    </article>
+    <article class="step" data-reveal style="--d:.24s">
+      <span class="step-num" aria-hidden="true">4</span>
+      <h3>Track your progress</h3>
+      <p>Watch your scores climb with a plan that runs up to interview day.</p>
+    </article>
+  </div>
+</section>
+
+<section class="home-honest" aria-labelledby="honest-title">
+  <h2 id="honest-title" data-reveal>Straight talk</h2>
+  <div class="honest-grid">
+    <div class="honest-card" data-reveal style="--d:0s">
+      <h3>AI-powered feedback on every answer</h3>
+      <p>An AI coach reads each answer and writes personal feedback: what worked, what to change, and a better way to say it. It never invents facts about you or your employer.</p>
+    </div>
+    <div class="honest-card" data-reveal style="--d:.08s">
+      <h3>Scores you can inspect</h3>
+      <p>The numbers come from named, rule-based checks you can read on the <a href="/how-scoring-works">How scoring works</a> page. The AI writes feedback but never changes your scores. It can still be wrong, so treat it as advice.</p>
+    </div>
+    <div class="honest-card" data-reveal style="--d:.16s">
+      <h3>You stay in control</h3>
+      <p>No accounts and nothing stored on the server; your history lives in your browser. With the AI coach on, your answers are sent to a third-party AI service to write feedback. Turn it off for a fully local, rule-based session.</p>
+    </div>
+  </div>
+</section>
+
+<section class="home-cta" data-reveal>
+  <h2>Ready when you are.</h2>
+  <p>It takes about a minute to set up and ten to run a session.</p>
+  <a class="btn light" href="/practice">Start practicing <span aria-hidden="true">→</span></a>
+</section>
+{% endblock %}

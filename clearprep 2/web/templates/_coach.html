@@ -1,0 +1,19 @@
+{% from "_macros.html" import coach_avatar %}
+<section class="card coach-card" id="coach-panel" aria-live="polite">
+  <div class="coach-head">{{ coach_avatar() }}
+    <div><h3>Your coach</h3><span class="muted small">Written by an AI coach. It reads your answer and the automated findings, and it can be wrong.</span></div></div>
+  {% if status == 'ok' %}
+    <p class="coach-note">{{ c.coach_note }}</p>
+    {% if c.worked %}<h4>What’s working</h4>
+    <ul class="coach-list">{% for w in c.worked %}<li>{{ w.point }}{% if w.quote %} <q>{{ w.quote }}</q>{% endif %}</li>{% endfor %}</ul>{% endif %}
+    {% if c.improve %}<h4>What to change</h4>
+    {% for i in c.improve %}<div class="fix coach-fix"><b>{{ i.issue }}</b>{% if i.why %}<span class="muted">{{ i.why }}</span>{% endif %}{% if i.try %}<div class="try"><strong>Try:</strong> {{ i.try }}</div>{% endif %}</div>{% endfor %}{% endif %}
+    {% if c.try_saying %}<h4>Try saying it like this</h4>
+    <div class="say-box">{{ c.try_saying|placeholders }}</div>
+    <p class="small muted">Built only from facts already in your answer. Fill the <span class="ph">[brackets]</span> with what really happened, and don’t guess numbers.</p>{% endif %}
+    {% if c.practice_next %}<div class="practice-next"><strong>Practice next:</strong> {{ c.practice_next }}</div>{% endif %}
+  {% else %}
+    <div class="notice {{ 'warn' if status == 'error' else '' }}">{{ message }} The rule-based feedback on this page still applies.</div>
+    {% if status == 'error' and state_json %}<form hx-post="/interview/coach" hx-target="#coach-panel" hx-swap="outerHTML"><input type="hidden" name="state" value="{{ state_json }}"><button class="btn ghost" type="submit">Try again</button></form>{% endif %}
+  {% endif %}
+</section>

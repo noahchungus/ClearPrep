@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% from "_macros.html" import bars, coach_avatar %}
+{% block title %}Report: {{ r.role }} at {{ r.org }}{% endblock %}
+{% block content %}
+<div class="row no-print" style="justify-content:space-between;margin-bottom:10px">
+  <span class="muted small" id="save-status" role="status"></span>
+  <div class="row">
+    <form method="post" action="/report.md"><input type="hidden" name="state" value="{{ state_json }}"><button class="btn ghost" type="submit">Download Markdown</button></form>
+    <button class="btn ghost" type="button" onclick="window.print()">Print / save as PDF</button>
+    <a class="btn primary" href="/practice">Practice again</a>
+  </div>
+</div>
+
+<div class="card">
+  <p class="muted small" style="margin:0">Mock interview report · {{ r.date }} · {{ r.interview_type }} · {{ r.family }}</p>
+  <h1 style="margin-top:4px">{{ r.role }} <span class="muted">at {{ r.org }}</span></h1>
+  {% if r.answered == 0 %}
+  <div class="notice warn">You didn’t answer any questions in this session, so there is nothing to score. <a href="/practice">Start a new interview</a>.</div>
+  {% else %}
+  <div class="score-head">
+    <div class="big-score {{ band_class(r.overall) }}" role="img" aria-label="Overall score {{ r.overall }}">{{ r.overall }}</div>
+    <div style="flex:1;min-width:240px"><h2 style="margin-bottom:4px">{{ r.band }}</h2><p>{{ r.verdict }}</p><p class="small muted">Answered {{ r.answered }} of {{ r.planned }} prompts{% if r.skipped %} · skipped {{ r.skipped }}{% endif %}{% if r.unanswered %} · ended early{% endif %}</p></div>
+  </div>
+  <div style="margin-top:14px">{{ bars(r.dims) }}</div>
+  {% endif %}
+</div>
+
+{% if r.answered %}
+{% if ai_on %}
+{% if ai_available() %}
+<form id="coach-summary" class="card coach-card coach-loading" hx-post="/report/coach" hx-trigger="load" hx-target="this" hx-swap="outerHTML" aria-live="polite">
+  <input type="hidden" name="state" value="{{ state_json }}">
+  <div class="coach-head">{{ coach_avatar() }}<div><h3>Your coach is writing your debrief…</h3><span class="muted small">A few seconds. Your scores below are already final.</span></div></div>
+  <div class="skeleton" aria-hidden="true"><i></i><i></i><i style="width:70%"></i></div>
+</form>
+{% else %}
+<div class="notice">The AI coach is on for this interview, but this server has no AI API key yet, so there is no written debrief. Add a key to the server’s <code>.env</code> file (see <code>.env.example</code>) and restart.</div>
+{% endif %}
+{% endif %}
+{% if r.priorities %}
+<div class="card">
+  <h2>Your top priorities <span class="muted small" style="font-family:var(--sans);font-weight:400">(automated)</span></h2>
+  <p class="small muted">Ranked by total points lost across all your answers. Each has one drill to practice before your next session.</p>
+  {% for p in r.priorities %}
+  <div class="fix"><b>{{ loop.index }}. {{ p.label }} <span class="muted small">· {{ p.dimension_label }} · −{{ p.points_lost }} pts across {{ p.answers_affected }} answer{{ '' if p.answers_affected == 1 else 's' }}</span></b>
+    <div><strong>Drill:</strong> {{ p.drill }}</div></div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="grid two">
+  <div class="card">
+    <h3>Delivery signals</h3>
+    <table><tbody>
+      <tr><td>Average length</td><td>{{ r.delivery.avg_words }} words</td></tr>
+      <tr><td>Numbers per answer</td><td>{{ r.delivery.avg_numbers }}</td></tr>
+      <tr><td>Action verbs per answer</td><td>{{ r.delivery.avg_action_verbs }}</td></tr>
+      <tr><td>“I” share (vs “we”)</td><td>{% if r.delivery.personal_ratio is not none %}{{ (r.delivery.personal_ratio * 100)|round|int }}%{% else %}n/a{% endif %}</td></tr>
+      <tr><td>Fillers per 100 words</td><td>{{ r.delivery.filler_per_100 }}</td></tr>
+      <tr><td>Hedges per 100 words</td><td>{{ r.delivery.hedge_per_100 }}</td></tr>
+      {% if r.delivery.avg_wpm %}<tr><td>Speaking pace</td><td>{{ r.delivery.avg_wpm|int }} wpm</td></tr>{% endif %}
+    </tbody></table>
+  </div>
+  <div class="card">
+    <h3>STAR completeness</h3>
+    <p class="small muted">Share of your behavioral answers containing each part.</p>
+    {% set any_star = false %}
+    <table><tbody>{% for k, v in r.star.items() %}{% if v is not none %}{% set any_star = true %}<tr><td>{{ k }}</td><td><span class="pill {{ band_class(v) }}">{{ v }}%</span></td></tr>{% endif %}{% endfor %}</tbody></table>
+    {% if r.competencies %}<h3 style="margin-top:14px">By topic</h3><table><tbody>{% for c in r.competencies %}<tr><td>{{ c.label }}</td><td><span class="pill {{ band_class(c.avg) }}">{{ c.avg }}</span></td></tr>{% endfor %}</tbody></table>{% endif %}
+  </div>
+</div>
+
+{% if r.jd %}
+<div class="card">
+  <h3>Job description coverage</h3>
+  <p class="small muted">Skills found in the posting you pasted, and whether your answers touched them. Mention a skill only where it’s true.</p>
+  <div class="chips">{% for s in r.jd.mentioned %}<span class="chip" style="border-color:var(--good)">✓ {{ s }}</span>{% endfor %}{% for s in r.jd.never %}<span class="chip" style="border-style:dashed">✗ {{ s }}</span>{% endfor %}</div>
+</div>
+{% endif %}
+
+<h2>Question by question</h2>
+{% for row in r.rows %}
+<details {% if loop.first and false %}open{% endif %}>
+  <summary><span>{{ row.index }}. {{ row.question|truncate(90) }}</span>
+    {% if row.skipped %}<span class="pill">skipped</span>{% else %}<span class="pill {{ band_class(row.overall) }}">{{ row.overall }}</span>{% endif %}</summary>
+  <div class="body">
+    {% if row.skipped %}<p class="muted">You skipped this question.</p>{% else %}
+    <p class="small muted">{{ row.competency }} · {{ row.words }} words{% if row.followup %} · follow-up: “{{ row.followup.text }}” {{ '(answered)' if row.followup.answered else '(skipped)' }}{% endif %}</p>
+    {{ bars(row.dims) }}
+    {% for f in row.fixes %}<div class="fix"><b>{{ f.label }} <span class="muted small">−{{ '%g' % f.lost }}</span></b>{{ f.detail }}</div>{% endfor %}
+    {% if row.scaffold %}<div class="scaffold" style="margin-top:8px">{% for s in row.scaffold %}<div class="sc"><b>{{ s.label }}</b> · {{ s.prompt }}</div>{% endfor %}</div>{% endif %}
+    {% endif %}
+  </div>
+</details>
+{% endfor %}
+{% endif %}
+
+<div class="notice" style="margin-top:18px"><strong>Limits of this report.</strong> {{ r.limitations }}</div>
+<script type="application/json" id="session-record">{{ record_json|safe }}</script>
+{% endblock %}

@@ -1,0 +1,189 @@
+# Hand-written exemplar answers, one per competency plus special answer types.
+# They exist to show STRUCTURE (situation -> task -> action -> result, with numbers and ownership),
+# not content to copy. The UI labels them as examples and asks users for their own facts.
+# `annotations` marks which sentence does which job so the structure is visible.
+
+teamwork:
+  scenario: "A group project where teammates depended on each other"
+  answer: >
+    In my database class last fall, our team of four had to build a small inventory app in six weeks.
+    My role was the backend, and I noticed early that we kept duplicating each other's work because nobody
+    knew who was doing what. So I proposed a shared checklist and a fifteen-minute check-in every Tuesday and
+    Friday, and I split the app into four pieces, one per person, based on what each of us wanted to practice.
+    When a teammate fell behind on the front end, I offered to pair with him for an hour, and I walked him
+    through the API endpoints he needed. We finished two days early and earned a 96 percent, and our
+    professor used our checklist as an example for the next class. What I took away is that a short
+    routine and clear ownership do more for a team than working longer hours.
+  parts: {S: 1, T: 2, A: [3, 4], R: 5}
+
+conflict:
+  scenario: "A disagreement with a teammate about the direction of a project"
+  answer: >
+    In a club project last spring, a teammate and I disagreed about whether to build the website from a
+    template or from scratch, and it was slowing us down. My goal was to reach a decision before the
+    Friday deadline without hurting the working relationship. First I asked him to explain his reasoning,
+    and I learned he was worried a template would look generic. Then I suggested we time-box it: we would
+    spend two hours prototyping a customized template, and if it still felt generic, we would build from scratch.
+    The template plan worked and we used his design ideas on top of it. We launched on Friday, and he
+    later told me he appreciated being heard first. I now start disagreements by asking why before I
+    explain what I think.
+  parts: {S: 1, T: 2, A: [3, 4], R: 5}
+
+failure:
+  scenario: "A mistake that had real consequences and a changed habit"
+  answer: >
+    In my first semester tutoring, I gave a student the wrong formula for a homework problem because I
+    answered from memory instead of checking. He turned in the wrong answer, and I felt responsible.
+    My job was to fix it and make sure it did not happen again. I told him and his professor as soon
+    as I realized, apologized, and re-worked the problem with him so he could resubmit before the
+    deadline. He received full credit on the resubmission. Since then I check every formula against the
+    textbook before I explain it, and I say out loud when I am not sure. I learned that admitting
+    a mistake early costs far less than hoping nobody notices.
+  parts: {S: 1, T: 2, A: 3, R: [4, 5]}
+
+initiative:
+  scenario: "Noticing an inefficiency and fixing it without being asked"
+  answer: >
+    At my part-time job at a campus bookstore, I noticed that staff spent about ten minutes every
+    morning hunting for the price list because it was in three different places. Nobody had asked me,
+    but I decided it was worth fixing. I asked my manager if I could try, gathered the three lists,
+    and built one shared spreadsheet with a printed copy at the register. I taught the team in a
+    five-minute huddle. Morning setup dropped from about twenty minutes to ten, and my manager
+    asked me to do the same for the return policy. I learned that small fixes that save people time
+    get adopted quickly when you make them easy to use.
+  parts: {S: 1, T: 2, A: [3, 4], R: 5}
+
+deadlines:
+  scenario: "Several competing deadlines in the same week"
+  answer: >
+    During finals week last semester, I had two exams, a lab report and a group presentation all
+    due within four days. My goal was to submit everything on time without letting my grades slip.
+    On Sunday I listed every deliverable with its due date and estimated hours, then ranked them by
+    deadline and weight. I emailed my group to move our rehearsal earlier and blocked two focused
+    study sessions of three hours each before the first exam. I also decided not to polish the
+    lab report beyond what the rubric required. I turned in everything on time, scored a 91 on the
+    presentation, and got a B-plus on the lab. Now I plan the week on Sunday every week.
+  parts: {S: 1, T: 2, A: [3, 4, 5], R: 6}
+
+leadership:
+  scenario: "Leading a group without formal authority"
+  answer: >
+    As treasurer of my school's coding club, I volunteered to organize our first hackathon after
+    nobody else stepped forward. We had three weeks and about twenty sign-ups. My responsibility was
+    to get sponsors, a room and a schedule. I split the work into four committees, asked each
+    volunteer which one they preferred, and set a ten-minute check-in each Monday to unblock people.
+    When a sponsor backed out, I called two local businesses the same day and got a replacement.
+    Forty-two people attended, we raised 600 dollars, and three members told me it was their first
+    hackathon. I learned that leading mostly means removing obstacles so others can do their best work.
+  parts: {S: 1, T: 2, A: [3, 4, 5], R: 6}
+
+adaptability:
+  scenario: "Learning a new tool quickly under time pressure"
+  answer: >
+    In my internship interview prep course, our instructor switched the final project from Excel to
+    Python two weeks before it was due. I had never used Python. My goal was to redo the analysis
+    correctly and still hit the deadline. I spent the first weekend on a beginner tutorial, then
+    rebuilt my analysis one step at a time, and asked a classmate who knew pandas to review my code
+    on Wednesday. I finished the project on time and earned an A-minus. I now keep a short list of
+    tools I want to learn so I am not starting from zero next time.
+  parts: {S: 1, T: 2, A: [3, 4], R: 5}
+
+motivation:
+  scenario: "Something you are proud of and why it matters"
+  answer: >
+    Last year at my community college's tutoring center, students signed up on paper and slots were
+    often double-booked. I was a tutor there, and my goal was to build a sign-up tool the front desk
+    would actually use. I interviewed two staff members, built a first version in Python and Flask in
+    three weeks, and changed the layout twice after watching them try it. As a result, double bookings
+    dropped from about five a week to zero within a month. It matters to me because it showed that
+    software is most valuable when it removes a real, everyday annoyance for people.
+  parts: {S: 1, T: 2, A: 3, R: 4}
+
+ethics:
+  scenario: "Doing the right thing when it was inconvenient"
+  answer: >
+    In a group project, I noticed a teammate had copied a section of the report from a website
+    without citing it. The deadline was in two days, and raising it felt awkward. My responsibility was
+    to make sure our submission was honest. I talked to him privately first, explained that it could be
+    treated as plagiarism for everyone, and offered to help him rewrite it in his own words that night.
+    He agreed, we rewrote it together in about an hour, and we cited the source properly. We submitted
+    on time. I learned that speaking up early and privately is usually kinder than letting a problem grow.
+  parts: {S: 1, T: 2, A: [3, 4], R: 5}
+
+problem_solving:
+  scenario: "A hard problem solved with a clear method"
+  answer: >
+    In my data structures class at my community college, my Python program passed all my tests but failed half
+    of the instructor's hidden tests, and I did not know why. My goal was to find the bug before the Sunday
+    deadline. I wrote down what the 4 failing cases had in common and realized they all involved empty
+    lists. I built three small inputs to reproduce it, added print statements to trace the values, and found
+    that I was indexing the first element before checking the length. I fixed it, added two tests for empty
+    input, and all 12 hidden tests passed. I now test edge cases such as empty and single-item inputs first.
+  parts: {S: 1, T: 2, A: [3, 4, 5], R: 6}
+
+communication:
+  scenario: "Explaining something complex to a non-expert"
+  answer: >
+    While volunteering at a senior center last spring, I was asked to teach residents how to spot phishing
+    emails, and most had never heard the word. My goal was to make it simple enough to use that same day.
+    I showed one real example on a projector in Google Slides, taught three questions to ask before
+    clicking, "Do I know the sender? Is it urgent? Does it ask for money or a password?", and had them
+    practice on 6 printed emails. At the end, 11 of 12 residents correctly identified the fake email, and 2
+    came back the next week with suspicious messages they had received. I learned that one clear example
+    teaches more than a list of rules.
+  parts: {S: 1, T: 2, A: [3, 4, 5], R: 6}
+
+# ---------------------------------------------------------------- special answer types
+intro:
+  scenario: "Tell me about yourself: present, past, future"
+  answer: >
+    I am a second-year computer science student at a California community college, working toward
+    transferring to a UC. Over the past year I built a scheduling web app for my school's tutoring
+    center, which cut double bookings from about five a week to zero, and I led our coding club's
+    first hackathon with 42 attendees. Before that I worked at a campus bookstore, where I learned
+    to be reliable and clear with customers. I am looking for an internship where I can apply what
+    I have learned about Python and databases on real projects and learn from experienced engineers,
+    which is why this role stood out to me.
+  parts: {present: 1, past: [2, 3], future: 4}
+
+why_org:
+  scenario: "Why this organization: specific, honest, and tied to you"
+  note: "Replace every detail below with your own true reasons; the structure is what matters."
+  answer: >
+    There are two things I keep coming back to. First, on your careers page you describe [a specific
+    program, product or value you found]. That matches the work I did in [your project or class],
+    where I [specific thing you did]. Second, the {role} role focuses on [a specific responsibility from
+    the job description], which is the part of [your field] I most want to get better at. I would like
+    to learn how a team actually does that at scale, and I think my experience with [a specific skill] would
+    let me contribute from the first few weeks.
+  parts: {org: 1, role: 2, you: 3}
+
+situational:
+  scenario: "What would you do if... (plan, reasons, follow-through)"
+  answer: >
+    First, I would confirm what I am seeing so I do not act on a wrong assumption; for example, I would
+    reread the instructions and check whether there is an example. Then I would ask my lead one specific
+    question rather than a general one, because it respects their time and shows I tried. After that I would
+    send a short written summary of my understanding, for instance, "I'll deliver X by Thursday, using Y", so
+    any misunderstanding shows up early. Finally, I would share a rough draft partway through and confirm
+    it is on track. That way I avoid a big rework at the end.
+  parts: {steps: [1, 2, 3, 4]}
+
+technical:
+  scenario: "Explain a concept: definition, how it works, example, trade-off"
+  answer: >
+    A hash map stores key-value pairs so you can look up a value by its key in constant time on average.
+    It works by running the key through a hash function to get an index into an array, so you go straight
+    to the slot instead of scanning. For example, in my scheduling project I used a dictionary keyed by
+    student ID to check for double bookings instantly. The trade-off is that hash maps use more memory
+    than a plain list, they do not keep a useful order by default, and collisions can slow down lookups
+    in the worst case.
+  parts: {definition: 1, how: 2, example: 3, tradeoff: 4}
+
+ask_us:
+  scenario: "Good questions to ask the interviewer"
+  answer: >
+    What does success look like in the first three months for someone in this role? Could you walk me through
+    what a typical week looks like for the team? What is the biggest challenge the team is working on right now?
+    How do interns or new hires get feedback and mentorship? What do you enjoy most about working here?
+  parts: {}

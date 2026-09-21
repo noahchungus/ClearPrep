@@ -1,0 +1,16 @@
+{% from "_macros.html" import coach_avatar %}
+<section class="card coach-card" id="coach-summary" aria-live="polite">
+  <div class="coach-head">{{ coach_avatar() }}
+    <div><h3>Your coach’s debrief</h3><span class="muted small">Written by an AI coach from your answers. It can be wrong.</span></div></div>
+  {% if status == 'ok' %}
+    <p class="coach-note">{{ c.headline }}</p>
+    {% if c.strengths %}<h4>What you did well</h4><ul class="coach-list">{% for s in c.strengths %}<li>{{ s }}</li>{% endfor %}</ul>{% endif %}
+    {% if c.priorities %}<h4>What to work on</h4>
+    {% for p in c.priorities %}<div class="fix coach-fix"><b>{{ loop.index }}. {{ p.focus }}</b>{% if p.why %}<span class="muted">{{ p.why }}</span>{% endif %}{% if p.drill %}<div class="try"><strong>Drill:</strong> {{ p.drill }}</div>{% endif %}</div>{% endfor %}{% endif %}
+    {% if c.plan %}<h4>Your plan</h4><ol class="plain">{% for s in c.plan %}<li>{{ s }}</li>{% endfor %}</ol>{% endif %}
+    {% if c.encouragement %}<div class="practice-next">{{ c.encouragement }}</div>{% endif %}
+  {% else %}
+    <div class="notice {{ 'warn' if status == 'error' else '' }}">{{ message }} The rule-based report below still applies.</div>
+    {% if status == 'error' and state_json %}<form hx-post="/report/coach" hx-target="#coach-summary" hx-swap="outerHTML"><input type="hidden" name="state" value="{{ state_json }}"><button class="btn ghost" type="submit">Try again</button></form>{% endif %}
+  {% endif %}
+</section>

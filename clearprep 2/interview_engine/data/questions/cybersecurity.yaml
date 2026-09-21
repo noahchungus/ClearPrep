@@ -1,0 +1,207 @@
+# Cybersecurity role family.
+
+- id: cy-tech-01
+  text: "Explain the CIA triad and give an example of each part."
+  type: technical
+  competency: technical
+  families: [cybersecurity]
+  difficulty: 1
+  concepts:
+    - [confidentiality, confidential]
+    - [integrity]
+    - [availability, available]
+    - [example, for example, e.g., such as]
+  strong_answer:
+    - "Defines confidentiality, integrity and availability in a phrase each."
+    - "Gives one example per part (encryption, hashing or checksums, redundancy or DDoS protection)."
+    - "Notes that controls trade off against each other."
+
+- id: cy-tech-02
+  text: "What is the difference between symmetric and asymmetric encryption?"
+  type: technical
+  competency: technical
+  families: [cybersecurity]
+  difficulty: 2
+  concepts:
+    - [symmetric, same key, shared key, aes]
+    - [asymmetric, public key, private key, rsa]
+    - [key exchange, key distribution, exchange]
+    - [speed, faster, slower, performance]
+    - [hybrid, tls, https]
+  strong_answer:
+    - "Says symmetric uses one shared key and asymmetric uses a public/private key pair."
+    - "Explains the trade-off: symmetric is fast but has a key distribution problem."
+    - "Mentions that protocols like TLS combine both."
+
+- id: cy-tech-03
+  text: "What is phishing, and what would you do if a user clicked a suspicious link?"
+  type: technical
+  competency: technical
+  families: [cybersecurity]
+  difficulty: 1
+  concepts:
+    - [phishing, social engineering]
+    - [report, escalate, security team, incident]
+    - [change password, reset, credentials, password]
+    - [isolate, disconnect, quarantine, contain]
+    - [scan, malware, antivirus, edr]
+    - [mfa, multi-factor, two-factor, 2fa]
+    - [user, training, educate, awareness]
+  strong_answer:
+    - "Defines phishing as tricking someone into giving access or information."
+    - "Describes a response in order: contain, reset credentials, investigate, report."
+    - "Includes a prevention step: training and multi-factor authentication."
+
+- id: cy-tech-04
+  text: "Walk me through the phases of incident response."
+  type: technical
+  competency: technical
+  families: [cybersecurity]
+  difficulty: 2
+  concepts:
+    - [preparation, prepare]
+    - [detection, identification, analysis, detect]
+    - [containment, contain]
+    - [eradication, eradicate, remove]
+    - [recovery, restore, recover]
+    - [lessons learned, post-incident, review, postmortem, retrospective]
+  strong_answer:
+    - "Names the phases in order: preparation, detection and analysis, containment, eradication, recovery, lessons learned."
+    - "Explains what happens in at least two phases with an example."
+    - "Mentions documentation and communication throughout."
+
+- id: cy-tech-05
+  text: "What is the difference between a vulnerability, a threat and a risk?"
+  type: technical
+  competency: technical
+  families: [cybersecurity]
+  difficulty: 1
+  concepts:
+    - [vulnerability, weakness, flaw]
+    - [threat, actor, attacker]
+    - [risk, likelihood, impact]
+    - [example, for example, e.g.]
+  strong_answer:
+    - "Defines vulnerability as a weakness, threat as something that can exploit it, and risk as likelihood times impact."
+    - "Ties them together with one example (unpatched server, attacker, data loss)."
+    - "Mentions how risk is prioritized."
+
+- id: cy-tech-06
+  text: "What is a firewall, and how does it differ from an IDS or IPS?"
+  type: technical
+  competency: technical
+  families: [cybersecurity]
+  difficulty: 2
+  concepts:
+    - [firewall, rules]
+    - [ids, intrusion detection, detect, alert]
+    - [ips, intrusion prevention, prevent, block]
+    - [network, traffic, packets]
+    - [signature, anomaly, behavior, behaviour]
+  strong_answer:
+    - "Says a firewall allows or blocks traffic by rules."
+    - "Says an IDS detects and alerts, while an IPS also blocks."
+    - "Mentions signature versus anomaly detection or placement in the network."
+
+- id: cy-tech-07
+  text: "What is the principle of least privilege, and why does it matter?"
+  type: technical
+  competency: technical
+  families: [cybersecurity]
+  difficulty: 1
+  concepts:
+    - [least privilege, minimum, minimal access, only what]
+    - [access, permissions, permission]
+    - [breach, compromise, blast radius, damage, limit]
+    - [role, rbac, roles]
+    - [review, audit, recertify]
+  strong_answer:
+    - "Defines it as giving users only the access they need."
+    - "Explains that it limits damage if an account is compromised."
+    - "Mentions roles and periodic access reviews."
+
+- id: cy-tech-08
+  text: "At a high level, what happens during a TLS/HTTPS handshake?"
+  type: technical
+  competency: technical
+  families: [cybersecurity, software]
+  difficulty: 3
+  concepts:
+    - [certificate, certificates]
+    - [public key, asymmetric]
+    - [session key, symmetric, shared secret]
+    - [authenticate, verify, trust, certificate authority, ca]
+    - [encrypted, encryption]
+  strong_answer:
+    - "Says the server presents a certificate that the client verifies."
+    - "Explains that the two sides agree on a shared session key."
+    - "Notes that traffic is then encrypted symmetrically."
+
+- id: cy-tech-09
+  text: "An alert shows many failed logins followed by a successful one for the same account. How would you investigate?"
+  type: technical
+  competency: problem_solving
+  families: [cybersecurity]
+  difficulty: 3
+  concepts:
+    - [brute force, password spraying, credential stuffing]
+    - [source ip, ip address, geolocation, location]
+    - [logs, log, siem]
+    - [account, user, contact, verify]
+    - [lock, reset, disable, mfa]
+    - [timeline, correlate, other events]
+  strong_answer:
+    - "Suggests likely causes (brute force, credential stuffing) but treats them as hypotheses."
+    - "Checks the source, timing and what the account did after login."
+    - "Contains the risk (reset, MFA) and documents the findings."
+
+- id: cy-tech-10
+  text: "What is patch management, and why do organizations struggle with it?"
+  type: technical
+  competency: technical
+  families: [cybersecurity]
+  difficulty: 2
+  concepts:
+    - [patch, patches, update, updates]
+    - [vulnerability, cve, severity, prioritize, critical]
+    - [test, testing, staging]
+    - [downtime, disruption, maintenance window]
+    - [inventory, assets, asset]
+    - [legacy, compatibility]
+  strong_answer:
+    - "Describes finding, prioritizing, testing and deploying updates."
+    - "Names real difficulties: downtime, compatibility, unknown assets."
+    - "Mentions risk-based prioritization (severity, exposure)."
+
+- id: cy-beh-01
+  text: "Tell me about a time you taught yourself a security concept, for example in a lab, CTF or home project."
+  type: behavioral
+  competency: initiative
+  families: [cybersecurity]
+  difficulty: 1
+  strong_answer:
+    - "Names the specific concept, tool or environment you used."
+    - "Explains how you practiced (steps, obstacles, what you had to look up)."
+    - "Shows what you can do now and how you would apply it at work."
+
+- id: cy-beh-02
+  text: "Describe a time you had to explain a security risk to someone who did not care about security."
+  type: behavioral
+  competency: communication
+  families: [cybersecurity]
+  difficulty: 2
+  strong_answer:
+    - "Identifies what mattered to the audience and framed the risk that way."
+    - "Uses a concrete example or consequence, not jargon or fear."
+    - "Shows what they agreed to do and how you followed up."
+
+- id: cy-sit-01
+  text: "You see a coworker's workstation unlocked with sensitive data on the screen and no one is around. What do you do?"
+  type: situational
+  competency: ethics
+  families: [cybersecurity]
+  difficulty: 2
+  strong_answer:
+    - "Locks the screen or secures the data without reading or touching anything else."
+    - "Tells the coworker afterward and explains why in a friendly way."
+    - "Reports through the proper channel if it is a repeat or the data was highly sensitive."

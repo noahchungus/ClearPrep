@@ -1,0 +1,102 @@
+# Cue-phrase patterns for STAR detection. Case-insensitive regular expressions.
+# Each match is a "cue". A component counts as present when the position-weighted
+# cue weight reaches the threshold set in analyzer.py (see the "How scoring works" page).
+#
+# zone: the part of the answer (0.0 = start, 1.0 = end) where the cue is most typical.
+# A cue found outside its zone counts for half.
+
+situation:
+  zone: [0.0, 0.6]
+  patterns:
+    - '\bwhen i (was|were|first|started)\b'
+    - '\b(at|in) my (\w+ ){0,3}(class|course|internship|job|club|team|project|school|college|workplace|company|lab|store|shop|group)\b'
+    - '\bin (a|an|our|the) (\w+ ){0,2}(class|course|project|report|club|team|group|lab|job|internship)\b'
+    - '\b(freshman|sophomore|junior|senior) year\b'
+    - '\bthis (summer|semester|year|spring|fall|winter|quarter)\b'
+    - '\b(two|three|four|five|a few|several|\d+) (weeks?|days?|months?|years?) (before|ago|into|after)\b'
+    - '\bi (noticed|realized|discovered|found out)\b'
+    - '\bduring (my|the|a|our|this)\b'
+    - '\blast (semester|year|summer|fall|spring|winter|quarter|month|week)\b'
+    - '\b(our|the|my) (\w+ )?(team|group|class|club|project|store|company|department|client) (was|had|were|needed)\b'
+    - '\bthere was a\b'
+    - '\bwe (had|were)\b'
+    - '\b(one time|once|a few (months|weeks|years) ago)\b'
+    - '\bwhile (i was|working|taking|volunteering|studying)\b'
+    - '\b(in|at) (high school|college|community college|university)\b'
+    - '\bas a (student|volunteer|member|tutor|intern|cashier|assistant|leader|captain|officer)\b'
+    - '\b(the )?(situation|context|background) (was|is)\b'
+    - '\b(faced|ran into|encountered|came across|dealt with) (a|an|the)\b'
+    - '\b(problem|issue|conflict|challenge|deadline) (was|came up|arose|happened)\b'
+
+task:
+  zone: [0.0, 0.7]
+  patterns:
+    - '\bmy (job|role|task|goal|responsibility|assignment|objective|part|duty)( as [\w ]{1,30})? (was|were)\b'
+    - '\bi was (responsible|asked|tasked|assigned|in charge|supposed|expected|the one)\b'
+    - '\b(i|we) (still |just |also )?(needed|had|wanted|aimed|was trying|was hoping|were trying)( \w+){0,3} to\b'
+    - '\bmy (plan|aim) was\b'
+    - '\bthe goal (was|is)\b'
+    - '\bwe (needed|had|were supposed|were asked) to\b'
+    - '\bi (volunteered|took on|took charge|stepped up|took the lead|offered)\b'
+    - '\bit was (my job|up to me|my responsibility)\b'
+    - '\b(needed|required|expected) (me )?to\b'
+    - '\b(tasked|charged) with\b'
+
+action:
+  zone: [0.15, 0.9]
+  patterns:
+    - '\bso i\b'
+    - '\bwe (decided|started|began|divided|split|met|planned|scheduled|built|created|wrote|organized|set up|reached out|talked|agreed)\b'
+    - '\bi (decided|started|began|proposed|suggested|reached out|set up|broke|divided|planned|scheduled|researched|tested|talked|spoke|met|asked)\b'
+    - '\b(first|then|next|after that|afterwards|finally|second),? i\b'
+    - '\bto (do|solve|fix|address|handle|resolve) (this|that|it|the problem|the issue),? i\b'
+    - '\b(my approach|the steps i took|what i did|here is what i did|here''s what i did)\b'
+    - '\bi (took|made|led|built|created|wrote|organized|developed|implemented|designed|coordinated|prioritized|analyzed|fixed|debugged|ran)\b'
+
+result:
+  zone: [0.5, 1.0]
+  patterns:
+    - '\bas a result\b'
+    - '\b(the )?(end )?results? (was|were|of that|showed)\b'
+    - '\bresulted in\b'
+    - '\b(in|at) the end\b'
+    - '\b(scored|earned|got|received|won) (an? |the )?(\d{2,3}|full credit|top|first|second|third)\b'
+    - '\b(earned|got) an? [a-d]-(plus|minus)\b'
+    - '\b(we|i|it|they|the team|our team) (ended|placed|secured|landed|doubled|tripled)\b'
+    - '\b(we|i|they) kept (the|our|my|its)\b'
+    - '(?<!until )(?<!so )\b(it|that|everything) (worked|passed)\b'
+    - '\b(all|every|each)( \w+){0,3} passed\b'
+    - '\bstopped (completely|entirely)\b'
+    - '\b(thanked|praised|complimented) (me|us)\b'
+    - '\b(appreciated|liked) (being|it|that|how)\b'
+    - '\bended up\b'
+    - '\b(the )?outcome (was|of)\b'
+    - '\bwhich (led|resulted|helped|allowed|meant|saved|reduced|increased|improved|got)\b'
+    - '\bthis (led|resulted|helped|allowed|saved|reduced|increased|improved|got|meant)\b'
+    - '\b(we|i|it|the team|the group|the class) (achieved|reduced|increased|saved|won|finished|completed|delivered|improved|earned|received|passed|shipped|launched|cut|boosted|grew|raised|exceeded|hit|met)\b'
+    - '\b(improved|reduced|increased|decreased|saved|cut|boosted|grew|raised|dropped|lowered) (\w+ ){0,3}(by|from|to)\b'
+    - '\b(positive|great|good|excellent) feedback\b'
+    - '\b(received|earned|got) (a|an|the) (\w+ )?(award|grade|a|b|score|praise|recognition|offer|promotion|thank)\b'
+    - '\bturned out\b'
+    - '\b(on time|ahead of schedule|under budget)\b'
+    - '\bsuccessful(ly)?\b'
+    - '\b(we|i|it) (got|were|was) (\w+ )?(approved|accepted|selected|recognized|finished|done)\b'
+
+# Reflection / learning cues (used for failure- and conflict-type questions).
+learning:
+  patterns:
+    - '\bi learned\b'
+    - '\blesson\b'
+    - '\btaught me\b'
+    - '\bnext time\b'
+    - '\bwould (do|have done|handle|approach) (it |this |that )?differently\b'
+    - '\bgoing forward\b'
+    - '\bsince then\b'
+    - '\bfrom that (experience|point|moment)\b'
+    - '\bnow i (always|make sure|check|ask|plan)\b'
+    - '\bi realized\b'
+    - '\bi now\b'
+
+# Time / scale expressions that count as concrete numbers even without digits.
+number_words:
+  - '\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|hundred|thousand|dozen|half|double|doubled|triple|tripled|twice)\b (?=(hours?|days?|weeks?|months?|years?|people|students|members|customers|clients|users|percent|times|minutes|teammates|classmates|volunteers|sales|tickets|bugs|projects|events|pages|points|dollars))'

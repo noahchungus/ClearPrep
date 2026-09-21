@@ -1,0 +1,89 @@
+# Skills lexicon: canonical name -> aliases (matched as whole words/phrases, case-insensitive).
+# `families` says where the skill is most relevant; `kind` picks the generated-question template
+# (tool = a technology you use, practice = a method, soft = an interpersonal skill).
+# Only skills present in the user's pasted job description are ever surfaced.
+
+skills:
+  # ---- software
+  - {name: Python, aliases: [python3], kind: tool, families: [software, data, cybersecurity]}
+  - {name: Java, aliases: [], kind: tool, families: [software]}
+  - {name: JavaScript, aliases: [js, ecmascript], kind: tool, families: [software]}
+  - {name: TypeScript, aliases: [], kind: tool, families: [software]}
+  - {name: C++, aliases: [cpp], kind: tool, families: [software]}
+  - {name: C#, aliases: [csharp], kind: tool, families: [software]}
+  - {name: React, aliases: [reactjs, react.js], kind: tool, families: [software]}
+  - {name: Node.js, aliases: [nodejs, node], kind: tool, families: [software]}
+  - {name: HTML, aliases: [html5], kind: tool, families: [software]}
+  - {name: CSS, aliases: [css3], kind: tool, families: [software]}
+  - {name: SQL, aliases: [mysql, postgresql, postgres, sqlite, t-sql], kind: tool, families: [software, data, business]}
+  - {name: Git, aliases: [github, gitlab, version control], kind: tool, families: [software, data]}
+  - {name: Docker, aliases: [containers, containerization], kind: tool, families: [software]}
+  - {name: Kubernetes, aliases: [k8s], kind: tool, families: [software]}
+  - {name: AWS, aliases: [amazon web services, ec2, s3], kind: tool, families: [software, data, cybersecurity]}
+  - {name: Azure, aliases: [microsoft azure], kind: tool, families: [software, data, cybersecurity]}
+  - {name: Google Cloud, aliases: [gcp], kind: tool, families: [software, data]}
+  - {name: Linux, aliases: [unix, shell scripting], kind: tool, families: [software, cybersecurity]}
+  - {name: REST APIs, aliases: [rest api, restful, api, apis], kind: practice, families: [software]}
+  - {name: CI/CD, aliases: [continuous integration, continuous deployment, jenkins, github actions], kind: practice, families: [software]}
+  - {name: Agile, aliases: [scrum, kanban, sprint, sprints], kind: practice, families: [software, business]}
+  - {name: Unit testing, aliases: [unit tests, test-driven development, tdd, pytest, junit], kind: practice, families: [software]}
+  - {name: Data structures, aliases: [algorithms, data structures and algorithms], kind: practice, families: [software]}
+  - {name: Object-oriented programming, aliases: [oop, object oriented], kind: practice, families: [software]}
+  - {name: Debugging, aliases: [troubleshooting], kind: practice, families: [software, cybersecurity]}
+  - {name: Networking, aliases: [tcp/ip, dns, http, networks], kind: practice, families: [software, cybersecurity]}
+  # ---- data
+  - {name: Excel, aliases: [microsoft excel, spreadsheets, pivot tables, vlookup], kind: tool, families: [data, business, marketing]}
+  - {name: Tableau, aliases: [], kind: tool, families: [data]}
+  - {name: Power BI, aliases: [powerbi], kind: tool, families: [data, business]}
+  - {name: pandas, aliases: [numpy, dataframes], kind: tool, families: [data]}
+  - {name: R programming, aliases: [rstudio, tidyverse, ggplot], kind: tool, families: [data]}
+  - {name: Statistics, aliases: [statistical analysis, hypothesis testing, regression], kind: practice, families: [data]}
+  - {name: Machine learning, aliases: [ml, scikit-learn, sklearn, tensorflow, pytorch], kind: practice, families: [data]}
+  - {name: Data visualization, aliases: [dashboards, dashboard, data visualisation, visualizations], kind: practice, families: [data, business, marketing]}
+  - {name: ETL, aliases: [data pipelines, data pipeline, data cleaning, data wrangling], kind: practice, families: [data]}
+  - {name: A/B testing, aliases: [ab testing, experimentation, split testing], kind: practice, families: [data, marketing]}
+  - {name: Data analysis, aliases: [analyzing data, analytics], kind: practice, families: [data, business, marketing]}
+  # ---- cybersecurity
+  - {name: SIEM, aliases: [splunk, qradar, sentinel, log analysis], kind: tool, families: [cybersecurity]}
+  - {name: Wireshark, aliases: [packet analysis, packet capture], kind: tool, families: [cybersecurity]}
+  - {name: Nmap, aliases: [network scanning, port scanning], kind: tool, families: [cybersecurity]}
+  - {name: Incident response, aliases: [incident handling], kind: practice, families: [cybersecurity]}
+  - {name: Vulnerability management, aliases: [vulnerability assessment, vulnerability scanning, nessus, patching, patch management], kind: practice, families: [cybersecurity]}
+  - {name: Firewalls, aliases: [firewall, intrusion detection], kind: tool, families: [cybersecurity]}
+  - {name: Penetration testing, aliases: [pentesting, pentest, ethical hacking, red team], kind: practice, families: [cybersecurity]}
+  - {name: Risk assessment, aliases: [risk management, threat modeling, threat modelling], kind: practice, families: [cybersecurity, business]}
+  - {name: NIST, aliases: [nist csf, nist 800-53, iso 27001, cis controls, compliance frameworks, soc 2], kind: practice, families: [cybersecurity]}
+  - {name: MITRE ATT&CK, aliases: [mitre, att&ck], kind: practice, families: [cybersecurity]}
+  - {name: Identity and access management, aliases: [iam, active directory, mfa, multi-factor authentication, access control], kind: practice, families: [cybersecurity]}
+  - {name: Encryption, aliases: [cryptography, tls, ssl, pki], kind: practice, families: [cybersecurity]}
+  - {name: Phishing, aliases: [phishing analysis, social engineering, security awareness], kind: practice, families: [cybersecurity]}
+  # ---- business / finance
+  - {name: Financial modeling, aliases: [financial analysis, valuation, dcf], kind: practice, families: [business]}
+  - {name: Forecasting, aliases: [budgeting, forecasts, variance analysis], kind: practice, families: [business, data]}
+  - {name: Accounting, aliases: [gaap, bookkeeping, reconciliation, accounts payable, accounts receivable, general ledger], kind: practice, families: [business]}
+  - {name: QuickBooks, aliases: [sap, oracle netsuite, netsuite], kind: tool, families: [business]}
+  - {name: PowerPoint, aliases: [presentations, slide decks], kind: tool, families: [business, marketing]}
+  - {name: CRM, aliases: [salesforce, hubspot crm, customer relationship management], kind: tool, families: [business, marketing]}
+  - {name: Project management, aliases: [project planning, timelines, gantt, jira, asana, trello], kind: practice, families: [business, software]}
+  - {name: Market research, aliases: [competitive analysis, market analysis, surveys], kind: practice, families: [business, marketing]}
+  - {name: KPIs, aliases: [kpi, metrics, key performance indicators, okrs], kind: practice, families: [business, marketing, data]}
+  - {name: Process improvement, aliases: [six sigma, operations improvement, workflow optimization], kind: practice, families: [business]}
+  # ---- marketing
+  - {name: SEO, aliases: [search engine optimization, keyword research], kind: practice, families: [marketing]}
+  - {name: Google Analytics, aliases: [ga4, web analytics, google tag manager], kind: tool, families: [marketing, data]}
+  - {name: Social media, aliases: [instagram, tiktok, linkedin, facebook, twitter, social media management], kind: practice, families: [marketing]}
+  - {name: Content creation, aliases: [content marketing, content strategy, blogging, copywriting, editing, storytelling], kind: practice, families: [marketing]}
+  - {name: Email marketing, aliases: [mailchimp, newsletters, klaviyo], kind: tool, families: [marketing]}
+  - {name: Paid advertising, aliases: [ppc, sem, google ads, meta ads, facebook ads], kind: practice, families: [marketing]}
+  - {name: Canva, aliases: [adobe creative suite, photoshop, illustrator, figma, adobe], kind: tool, families: [marketing]}
+  - {name: Campaign management, aliases: [campaigns, campaign planning, brand strategy, branding], kind: practice, families: [marketing]}
+  # ---- soft skills (any family)
+  - {name: Communication, aliases: [communicating, written communication, verbal communication, interpersonal], kind: soft, families: [general, software, data, cybersecurity, business, marketing]}
+  - {name: Collaboration, aliases: [collaborating, cross-functional, teamwork, team player], kind: soft, families: [general, software, data, cybersecurity, business, marketing]}
+  - {name: Problem solving, aliases: [problem-solving, analytical thinking, critical thinking], kind: soft, families: [general, software, data, cybersecurity, business, marketing]}
+  - {name: Attention to detail, aliases: [detail-oriented, detail oriented, accuracy, meticulous], kind: soft, families: [general, software, data, cybersecurity, business, marketing]}
+  - {name: Time management, aliases: [prioritization, multitasking, deadlines, organizational skills], kind: soft, families: [general, software, data, cybersecurity, business, marketing]}
+  - {name: Customer service, aliases: [customer support, client-facing, client facing, customer focus], kind: soft, families: [general, business, marketing, software]}
+  - {name: Leadership, aliases: [mentoring, initiative, ownership], kind: soft, families: [general, software, data, cybersecurity, business, marketing]}
+  - {name: Adaptability, aliases: [flexibility, fast learner, quick learner, learning quickly, self-starter], kind: soft, families: [general, software, data, cybersecurity, business, marketing]}
+  - {name: Documentation, aliases: [technical writing, documenting, reporting], kind: soft, families: [software, data, cybersecurity, business]}

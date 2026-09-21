@@ -1,0 +1,262 @@
+[
+ {
+  "id": "d01",
+  "competency": "teamwork",
+  "question": "Tell me about a time you worked effectively as part of a team.",
+  "quality": "good",
+  "text": "In my database class last fall, our team of four had to build a small inventory app in six weeks. I was responsible for the backend, and I noticed we kept duplicating work because nobody knew who owned what. So I proposed a shared checklist and a short check-in every Tuesday and Friday, and I split the app into four pieces. We finished two days early and earned a 96 percent.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "d02",
+  "competency": "failure",
+  "question": "Tell me about a time you made a mistake.",
+  "quality": "good",
+  "text": "When I was tutoring last year, I gave a student the wrong formula because I answered from memory. He turned in the wrong answer and I felt responsible. I told him and his professor right away, apologized, and re-worked the problem with him so he could resubmit. He got full credit on the resubmission. Since then I check every formula against the textbook before I explain it.",
+  "star": {
+   "situation": 1,
+   "task": 0,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "d03",
+  "competency": "conflict",
+  "question": "Describe a time you disagreed with a teammate.",
+  "quality": "good",
+  "text": "During a club project last spring, a teammate and I disagreed about building the website from a template or from scratch, and it was slowing us down. I needed us to decide before Friday without hurting the friendship. First I asked him to explain his reasoning, then I suggested a two-hour trial of a customized template. It worked, we launched on Friday, and he said he appreciated being heard first.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "d04",
+  "competency": "deadlines",
+  "question": "Describe a time you had several competing deadlines.",
+  "quality": "good",
+  "text": "Finals week last semester, I had two exams, a lab report and a group presentation due within four days. My goal was to submit everything on time. I listed each deliverable with its weight, ranked them, blocked two three-hour study sessions, and asked my group to move our rehearsal earlier. I turned in everything on time and scored a 91 on the presentation.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "d05",
+  "competency": "initiative",
+  "question": "Tell me about a time you went above and beyond.",
+  "quality": "good",
+  "text": "At my campus bookstore job, staff wasted about ten minutes every morning hunting for the price list because it lived in three places. Nobody asked me to fix it, but I gathered the lists into one shared spreadsheet, printed a copy for the register, and showed everyone in a five-minute huddle. Morning setup dropped from twenty minutes to ten, and my manager had me do the same for the return policy.",
+  "star": {
+   "situation": 1,
+   "task": 0,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "d06",
+  "competency": "teamwork",
+  "question": "Tell me about a time you helped a struggling teammate.",
+  "quality": "mid",
+  "text": "In my web development class, one of my teammates was really struggling with the JavaScript part of our project. I sat with him for an hour and walked him through how the functions were connected, and then I gave him a smaller task to build his confidence. We checked in a couple of times that week.",
+  "star": {
+   "situation": 1,
+   "task": 0,
+   "action": 1,
+   "result": 0
+  }
+ },
+ {
+  "id": "d07",
+  "competency": "motivation",
+  "question": "What is your greatest strength?",
+  "quality": "weak",
+  "text": "I am a very hard worker and a team player. I always give one hundred percent and I care a lot about doing a good job. People tell me I am reliable and I like helping others.",
+  "star": {
+   "situation": 0,
+   "task": 0,
+   "action": 0,
+   "result": 0
+  }
+ },
+ {
+  "id": "d08",
+  "competency": "adaptability",
+  "question": "Tell me about a time you had to learn something new quickly.",
+  "quality": "weak",
+  "text": "There was a time in one of my classes where we had to use a new program and it was kind of hard at first. It was a lot to learn but it was fine.",
+  "star": {
+   "situation": 1,
+   "task": 0,
+   "action": 0,
+   "result": 0
+  }
+ },
+ {
+  "id": "d09",
+  "competency": "teamwork",
+  "question": "Describe a group project experience.",
+  "quality": "weak",
+  "text": "We had a group project in my history class and we all worked on a lot of stuff. We divided things up and we met a few times. We turned it in and it went well and we got a good grade.",
+  "star": {
+   "situation": 1,
+   "task": 0,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "d10",
+  "competency": "leadership",
+  "question": "Tell me about a time you led a group.",
+  "quality": "good",
+  "text": "Freshman year our robotics club was down to five members and about to lose its room. I volunteered to run recruiting, so I made a flyer, gave two-minute pitches in three classes, and set up a demo table at orientation. We ended the semester with nineteen members and kept the room.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "d11",
+  "competency": "deadlines",
+  "question": "Tell me about working under pressure.",
+  "quality": "mid",
+  "text": "My job was to finish the final report for our capstone before the Friday deadline. I stayed up two nights, rewrote the introduction, and asked a friend to proofread it. In the end we turned it in on time and got an A.",
+  "star": {
+   "situation": 0,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "d12",
+  "competency": "initiative",
+  "question": "Tell me about something you started.",
+  "quality": "weak",
+  "text": "Um, I like, made a thing for my friends, you know, and I kind of set it up on my own.",
+  "star": {
+   "situation": 0,
+   "task": 0,
+   "action": 1,
+   "result": 0
+  }
+ },
+ {
+  "id": "d13",
+  "competency": "problem_solving",
+  "question": "Tell me about a hard problem you solved.",
+  "quality": "good",
+  "text": "In my data structures class, my program passed my tests but failed half of the instructor's hidden tests. I had until Sunday to find the bug. I noticed the failing cases all involved empty lists, so I built three small inputs to reproduce it, added print statements, and found I was indexing the first item before checking the length. I fixed it, added two tests, and every hidden test passed.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "d14",
+  "competency": "teamwork",
+  "question": "How did your last project go?",
+  "quality": "weak",
+  "text": "In the end it turned out great and everyone was really happy with how everything came together.",
+  "star": {
+   "situation": 0,
+   "task": 0,
+   "action": 0,
+   "result": 1
+  }
+ },
+ {
+  "id": "d15",
+  "competency": "communication",
+  "question": "Tell me about explaining something complicated.",
+  "quality": "good",
+  "text": "While volunteering at a senior center, I was asked to teach residents how to spot phishing emails, and most had never heard the word. I needed it to be simple enough to use that day. I showed one real example on a projector, taught three questions to ask before clicking, and had them practice on printed emails. At the end eleven of twelve spotted the fake, and two came back the next week with suspicious messages.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "d16",
+  "competency": "conflict",
+  "question": "Tell me about a conflict at work.",
+  "quality": "mid",
+  "text": "At my part-time job at a restaurant there was a lot of tension between the kitchen and the front of house because orders kept getting mixed up. I talked to the head cook and to one of the servers separately to understand what each side saw, and then I suggested writing orders in a standard format on the tickets. We started using it the next week and I kept watching how it went. It was a long summer with a lot going on and I was also taking two classes and trying to save money for the fall.",
+  "star": {
+   "situation": 1,
+   "task": 0,
+   "action": 1,
+   "result": 0
+  }
+ },
+ {
+  "id": "d17",
+  "competency": "adaptability",
+  "question": "Tell me about a time plans changed.",
+  "quality": "good",
+  "text": "Two weeks before our final project was due, the instructor switched us from Excel to Python, and I had never used Python. I still had to redo the whole analysis. I spent the weekend on a beginner tutorial, rebuilt the analysis one step at a time, and asked a classmate to review my code on Wednesday. I finished on time and earned an A-minus.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "d18",
+  "competency": "ethics",
+  "question": "Tell me about a time you did the right thing.",
+  "quality": "good",
+  "text": "In a group report, I noticed a teammate had copied a section from a website without citing it, two days before the deadline. I felt awkward but I had to make sure we submitted honest work. I talked to him privately, explained it could count as plagiarism for all of us, and offered to help rewrite it that night. We rewrote it in an hour, cited the source, and turned it in on time.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 1,
+   "result": 1
+  }
+ },
+ {
+  "id": "d19",
+  "competency": "problem_solving",
+  "question": "What would you do if you were stuck?",
+  "quality": "weak",
+  "text": "If I got stuck I would try to stay calm and think about it carefully. I would probably ask for help if I needed to and try different things until it worked.",
+  "star": {
+   "situation": 0,
+   "task": 0,
+   "action": 0,
+   "result": 0
+  }
+ },
+ {
+  "id": "d20",
+  "competency": "initiative",
+  "question": "Tell me about a leadership moment.",
+  "quality": "mid",
+  "text": "Last summer I was a camp counselor for a group of twelve kids aged nine and ten. My responsibility was to keep the group safe and engaged during the daily two-hour afternoon program.",
+  "star": {
+   "situation": 1,
+   "task": 1,
+   "action": 0,
+   "result": 0
+  }
+ }
+]

@@ -1,0 +1,150 @@
+# The competencies interviewers probe most often, with hand-written coaching content.
+# cues: words that signal you are actually talking about this competency (used by the relevance score).
+# rephrase: a different way to think about the question when the user is stuck.
+# probe: the follow-up interviewers tend to ask about this competency.
+# scaffold: fill-in-the-blank prompts for Situation / Task / Action / Result specific to the competency.
+# looks_for: what the interviewer is actually evaluating.
+
+teamwork:
+  label: Teamwork
+  looks_for: Can you contribute to a group without needing to be in charge, and do you help the team succeed?
+  cues: [team, teammate, together, collaborate, group, shared, roles, everyone, colleagues, partner, pair, coordinate, communicated, contribution, supported]
+  rephrase: Think of a group project, club, sports team or job where you depended on other people. What was your part, and how did you help the group succeed?
+  probe: What would your teammates say you contributed?
+  scaffold:
+    situation: "Where was this group and what was it trying to do? (class, club, job, team)"
+    task: "What was your specific role or responsibility in the group?"
+    action: "What did YOU do to help the group work well? (communicating, covering a gap, coordinating)"
+    result: "How did the group do, and what part of that was because of what you did?"
+
+conflict:
+  label: Conflict & disagreement
+  looks_for: Can you disagree respectfully, listen, and reach a workable outcome without drama?
+  cues: [disagree, disagreement, conflict, tension, different, perspective, listened, understand, compromise, resolved, discuss, talked, misunderstanding, frustrated, agreed]
+  rephrase: Think of a time you and someone else wanted different things (a classmate, coworker, manager, customer). How did you handle it?
+  probe: How did the other person react, and how is the relationship now?
+  scaffold:
+    situation: "Who disagreed with whom, about what, and why did it matter?"
+    task: "What did you need to accomplish despite the disagreement?"
+    action: "What did you say or do first? How did you listen to their side? What did you propose?"
+    result: "How was it resolved, and how did you and the other person work together afterwards? What did you learn?"
+
+failure:
+  label: Failure & mistakes
+  looks_for: Do you own mistakes honestly, fix them, and actually change your behaviour afterwards?
+  cues: [mistake, failed, failure, wrong, missed, lesson, learned, overlooked, error, fault, responsibility, apologized, fixed, differently, improve]
+  rephrase: Think of something that did not go the way you wanted — a bad grade, a missed deadline, a bug you shipped, a decision you would undo. What happened, and what did you change?
+  probe: What would you do differently if it happened again tomorrow?
+  scaffold:
+    situation: "What were you doing when things went wrong? Be honest about your part."
+    task: "What was at stake, and what did you have to fix or recover?"
+    action: "What did you do once you noticed — did you tell someone, fix it, prevent a repeat?"
+    result: "What was the outcome, and what specifically do you do differently now? (The lesson matters most.)"
+
+initiative:
+  label: Initiative
+  looks_for: Do you spot problems or opportunities and act without being asked?
+  cues: [initiative, noticed, proposed, suggested, volunteered, idea, started, created, improved, opportunity, extra, own, without, took, launched]
+  rephrase: Think of a time you saw something that could be better and did something about it before anyone asked you to.
+  probe: Why did you decide to do it yourself instead of waiting for someone else?
+  scaffold:
+    situation: "What did you notice that wasn't working or could be better?"
+    task: "Why was it your place to act? What did you set out to change?"
+    action: "What did you do first, who did you involve, and how did you get it going?"
+    result: "What changed because of it? Did it get adopted, save time, help people?"
+
+deadlines:
+  label: Deadlines & pressure
+  looks_for: Can you prioritize, stay calm and deliver when time is short?
+  cues: [deadline, prioritize, priorities, schedule, time, pressure, urgent, plan, tasks, managed, balance, organized, due, overwhelmed, workload, planned]
+  rephrase: Think of a busy stretch — finals week, a work rush, several assignments due at once. How did you decide what to do first and still get it done?
+  probe: What did you decide NOT to do, and how did you communicate that?
+  scaffold:
+    situation: "What was competing for your time, and when was everything due?"
+    task: "What did you have to deliver, and what was the risk if you didn't?"
+    action: "How did you prioritize and plan? What did you cut, delegate or ask for help with?"
+    result: "Did you deliver on time? How did the work turn out? What system do you use now?"
+
+leadership:
+  label: Leadership
+  looks_for: Can you guide others, make decisions and get people moving — even without a title?
+  cues: [led, lead, leader, leadership, guided, motivated, delegated, mentored, organized, decision, responsible, captain, coordinated, coached, directed, chaired]
+  rephrase: Leadership doesn't need a title. Think of a time you organized people, coached someone, or took charge of a group project, club event or shift.
+  probe: How did you get people to follow your plan when you had no authority over them?
+  scaffold:
+    situation: "What group were you leading or guiding, and toward what goal?"
+    task: "What did you have to get done through other people?"
+    action: "How did you organize people, make decisions and keep everyone motivated?"
+    result: "How did the group perform? What did others say or do that shows it worked?"
+
+adaptability:
+  label: Adaptability
+  looks_for: Do you learn quickly and stay effective when plans, tools or expectations change?
+  cues: [adapt, adapted, changed, change, new, learn, learned, flexible, unexpected, adjust, pivot, unfamiliar, quickly, switch, transition]
+  rephrase: Think of a time something changed suddenly (new tool, new professor, plans falling apart, switching classes or jobs). How did you adjust?
+  probe: How long did it take you to get up to speed, and how did you do that?
+  scaffold:
+    situation: "What changed, and how suddenly?"
+    task: "What did you need to be able to do in the new situation?"
+    action: "How did you learn or adjust? (resources, people you asked, a plan for the first week)"
+    result: "How quickly were you effective? What did you take from it?"
+
+motivation:
+  label: Motivation & fit
+  looks_for: Do you have genuine, specific reasons for this field, role and organization?
+  cues: [interested, passion, motivated, excited, enjoy, goal, drawn, curious, career, learn, because, values, mission, growth, excites]
+  rephrase: What is the honest story of how you ended up wanting this, and what specifically about this work keeps you interested?
+  probe: What else were you considering, and why did this win?
+  scaffold:
+    situation: "When did you first get interested in this field or work?"
+    task: "What are you trying to build toward (skills, career, impact)?"
+    action: "What have you already done to pursue it? (classes, projects, clubs, self-study)"
+    result: "What did that teach you about what you want, and how does this role fit next?"
+
+ethics:
+  label: Integrity & ethics
+  looks_for: Do you do the right thing when it is inconvenient, and speak up appropriately?
+  cues: [honest, honesty, integrity, ethical, ethics, right, policy, confidential, report, reported, trust, fair, cheat, rules, privacy, responsible, disclosed]
+  rephrase: Think of a moment when the easy path and the right path were different — a shortcut, a rule, a mistake by someone else, or something confidential.
+  probe: Did it cost you anything, and would you do it again?
+  scaffold:
+    situation: "What was the situation and what made it ethically tricky?"
+    task: "What were you expected or tempted to do, versus what was right?"
+    action: "What did you decide and do? Who did you tell, and how did you handle it professionally?"
+    result: "What happened, and what did it show about how you work?"
+
+problem_solving:
+  label: Problem solving
+  looks_for: Can you break down an unfamiliar problem, test ideas and reach a solution methodically?
+  cues: [problem, solve, solved, solution, approach, debug, debugged, analyzed, investigated, root, cause, hypothesis, tested, broke, research, diagnosed, steps]
+  rephrase: Think of a problem that had no obvious answer — a bug, a broken process, a hard assignment. How did you work your way to a solution?
+  probe: What else did you try that didn't work?
+  scaffold:
+    situation: "What was the problem and why was it hard or unclear?"
+    task: "What exactly did you need to figure out or fix?"
+    action: "How did you break it down? What did you try, test or research, in order?"
+    result: "What was the solution, how do you know it worked, and what would you do faster next time?"
+
+communication:
+  label: Communication
+  looks_for: Can you explain things clearly to different audiences and make sure you were understood?
+  cues: [explained, explain, presented, presentation, audience, clear, simplified, listened, wrote, email, feedback, understood, communicated, message, questions, clarified, summary]
+  rephrase: Think of a time you had to explain something complicated, or get a message across to someone who was not on the same page.
+  probe: How did you know they understood?
+  scaffold:
+    situation: "Who did you need to communicate with, and what was the message?"
+    task: "What made it hard? (technical, sensitive, an unfamiliar audience)"
+    action: "How did you tailor what you said? What did you do to check they understood?"
+    result: "What happened afterwards? What feedback or outcome shows it worked?"
+
+technical:
+  label: Technical knowledge
+  looks_for: Do you understand core concepts well enough to explain them simply and apply them?
+  cues: []
+  rephrase: Start with a one-sentence definition, then explain how it works, then give a small example or a trade-off.
+  probe: Can you give me a concrete example?
+  scaffold:
+    situation: "Define the concept or state your decision in one sentence."
+    task: "Say when and why it matters or is used."
+    action: "Explain how it works step by step, or how you would do it."
+    result: "Give an example, a trade-off, or where you have used it."

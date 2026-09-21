@@ -1,0 +1,56 @@
+{% macro bars(dims) %}
+<div class="bars" role="list">
+  {% for d in DIMS %}
+  <div class="bar" role="listitem"><span>{{ DIM_LABELS[d] }}</span>
+    <div class="track" role="img" aria-label="{{ DIM_LABELS[d] }} {{ dims[d] }} out of 100"><div class="fill {{ band_class(dims[d]) }}" style="width: {{ dims[d] }}%"></div></div>
+    <b>{{ dims[d] }}</b></div>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro star_chips(star) %}
+<div class="star-row" aria-label="STAR components detected">
+  {% for key, label in [('situation','S · Situation'),('task','T · Task'),('action','A · Action'),('result','R · Result')] %}
+  <span class="star-chip {{ star[key].status }}" title="{{ star[key].status|capitalize }}{% if star[key].evidence %}: {{ star[key].evidence[0].text }}{% endif %}">{{ label }}{% if star[key].status == 'present' %} ✓{% elif star[key].status == 'weak' %} ~{% else %} ✗{% endif %}</span>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro checks(analysis) %}
+{% for d in DIMS %}
+{% set dim = analysis.dimensions[d] %}
+<details>
+  <summary><span>{{ DIM_LABELS[d] }}</span> <span class="pill {{ band_class(dim.score) }}">{{ dim.score }}/100</span></summary>
+  <div class="body">
+    {% for c in dim.checks %}
+    <div class="chk">
+      <strong>{{ c.label }}</strong>
+      {% if c.possible > 0 %}
+      {% set ratio = c.earned / c.possible %}
+      <span class="pts {{ 'good' if ratio >= 0.75 else 'ok' if ratio >= 0.4 else 'low' }}">{{ '%g' % c.earned }} / {{ '%g' % c.possible }}</span>
+      {% else %}<span class="pts low">{{ '%g' % c.earned }}</span>{% endif %}
+      <p>{{ c.detail }}</p>
+      {% if c.evidence %}<div class="ev">{% for e in c.evidence %}<span>“{{ e.text|truncate(60) }}”</span>{% endfor %}</div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</details>
+{% endfor %}
+{% endmacro %}
+
+{% macro legend() %}
+<div class="legend" aria-label="Highlight legend">
+  <span><mark class="hl hl-star-a">STAR cue</mark></span><span><mark class="hl hl-number">number</mark></span><span><mark class="hl hl-verb">action verb</mark></span>
+  <span><mark class="hl hl-match">matches job text</mark></span><span><mark class="hl hl-we">we / our</mark></span><span><mark class="hl hl-hedge">filler · hedge · vague</mark></span>
+</div>
+{% endmacro %}
+
+{% macro coach_avatar() %}
+<svg class="coach-avatar" viewBox="0 0 64 64" aria-hidden="true">
+  <circle cx="32" cy="34" r="22" fill="#fff" stroke="#c9d6e6" stroke-width="2"/>
+  <path d="M28 13 L17 16 L9 30 Z" fill="#c4d3e6" stroke="#9db2cc" stroke-width="1.6" stroke-linejoin="round"/><path d="M36 13 L47 16 L55 30 Z" fill="#c4d3e6" stroke="#9db2cc" stroke-width="1.6" stroke-linejoin="round"/>
+  <ellipse cx="32" cy="32" rx="14" ry="11" fill="#0b2447"/>
+  <circle cx="27" cy="30" r="2.6" fill="#8fd6ff"/><circle cx="37" cy="30" r="2.6" fill="#8fd6ff"/>
+  <ellipse cx="32" cy="35.5" rx="3" ry="2.2" fill="#e8f3ff"/>
+</svg>
+{% endmacro %}

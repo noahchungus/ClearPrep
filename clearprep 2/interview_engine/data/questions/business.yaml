@@ -1,0 +1,210 @@
+# Business / Finance / Operations role family.
+
+- id: bu-tech-01
+  text: "Walk me through the three main financial statements and how they connect."
+  type: technical
+  competency: technical
+  families: [business]
+  difficulty: 2
+  concepts:
+    - [income statement, profit and loss, "p&l"]
+    - [balance sheet]
+    - [cash flow, cash flow statement]
+    - [net income, retained earnings]
+    - [assets, liabilities, equity]
+    - [link, connect, flows, feeds]
+  strong_answer:
+    - "Names the income statement, balance sheet and cash flow statement and what each shows."
+    - "Explains one link: net income flows into retained earnings, and cash flow reconciles cash."
+    - "Uses one small example."
+
+- id: bu-tech-02
+  text: "What is the difference between revenue, profit and cash flow?"
+  type: technical
+  competency: technical
+  families: [business]
+  difficulty: 1
+  concepts:
+    - [revenue, sales, top line]
+    - [profit, net income, margin, bottom line]
+    - [cash flow, cash]
+    - [timing, accrual, receivable, receivables]
+    - [expenses, costs, cost]
+  strong_answer:
+    - "Defines each precisely: revenue is what is earned, profit is what is left after costs, cash flow is actual money moving."
+    - "Explains that a profitable company can run out of cash because of timing."
+    - "Gives an example."
+
+- id: bu-tech-03
+  text: "Three stakeholders each say their request is urgent. How do you prioritize?"
+  type: technical
+  competency: deadlines
+  families: [business]
+  difficulty: 2
+  concepts:
+    - [stakeholder, stakeholders]
+    - [impact, importance, urgency, priority, prioritize]
+    - [communicate, transparent, expectations]
+    - [deadline, deadlines, due date]
+    - [escalate, manager, ask]
+  strong_answer:
+    - "Uses explicit criteria (impact, deadline, effort) rather than who asked loudest."
+    - "Communicates the plan and trade-offs to each stakeholder."
+    - "Escalates to a manager if the priorities truly conflict."
+
+- id: bu-tech-04
+  text: "How would you build a simple budget or forecast for a small project?"
+  type: technical
+  competency: problem_solving
+  families: [business]
+  difficulty: 2
+  concepts:
+    - [assumptions, assumption]
+    - [revenue, income]
+    - [costs, expenses, fixed, variable]
+    - [scenario, best case, worst case, sensitivity]
+    - [actuals, variance, compare]
+    - [review, update, revisit]
+  strong_answer:
+    - "Starts by listing assumptions and the sources of numbers."
+    - "Separates fixed and variable costs and models a few scenarios."
+    - "Plans to compare actuals to the forecast and update."
+
+- id: bu-tech-05
+  text: "How would you use Excel to analyze a large sales dataset?"
+  type: technical
+  competency: technical
+  families: [business, data, marketing]
+  difficulty: 1
+  concepts:
+    - [pivot table, pivot, pivot tables]
+    - [vlookup, xlookup, lookup, index match]
+    - [formulas, formula, sumif, countif, sumifs]
+    - [chart, charts, graph]
+    - [clean, cleaning, duplicates, remove duplicates]
+    - [filter, sort, filters]
+  strong_answer:
+    - "Starts by cleaning the data (duplicates, formats)."
+    - "Uses pivot tables and lookup or SUMIF-type formulas to summarize."
+    - "Finishes with a chart and a takeaway, not just a table."
+
+- id: bu-tech-06
+  text: "What is working capital, and why does it matter?"
+  type: technical
+  competency: technical
+  families: [business]
+  difficulty: 2
+  concepts:
+    - [current assets]
+    - [current liabilities]
+    - [liquidity, short-term, short term]
+    - [cash, inventory, receivables, payables]
+    - [operations, day-to-day, day to day]
+  strong_answer:
+    - "Defines it as current assets minus current liabilities."
+    - "Explains that it shows the ability to meet short-term obligations."
+    - "Gives an example of how inventory or receivables tie up cash."
+
+- id: bu-tech-07
+  text: "What makes a good KPI? Give an example for a customer support team."
+  type: technical
+  competency: technical
+  families: [business, marketing]
+  difficulty: 1
+  concepts:
+    - [measurable, metric, quantifiable]
+    - [goal, objective, aligned, tied]
+    - [actionable, action]
+    - [time, period, timeframe, timeline]
+    - [response time, first response, csat, satisfaction, resolution, tickets]
+  strong_answer:
+    - "Says a KPI is measurable, tied to a goal, and actionable."
+    - "Gives a clear example (first response time, resolution time, CSAT)."
+    - "Mentions a risk, such as metrics that can be gamed."
+
+- id: bu-tech-08
+  text: "How do you make sure your numbers are accurate before you send a report?"
+  type: technical
+  competency: technical
+  families: [business, data]
+  difficulty: 1
+  concepts:
+    - [double-check, check, verify, review, checks]
+    - [reconcile, reconciliation, tie out, tie-out]
+    - [source, source data, original]
+    - [second pair of eyes, peer review, colleague, someone else]
+    - [formula, formulas, audit]
+    - [reasonableness, sanity check, compare prior, compare]
+  strong_answer:
+    - "Names concrete checks: reconcile to the source, spot-check formulas, compare to prior periods."
+    - "Gets a second reviewer for important reports."
+    - "Gives an example where a check caught an error."
+
+- id: bu-tech-09
+  text: "Describe how you would run a small process improvement."
+  type: technical
+  competency: problem_solving
+  families: [business]
+  difficulty: 2
+  concepts:
+    - [map, current process, baseline, current state]
+    - [bottleneck, waste, root cause]
+    - [measure, metric, metrics]
+    - [pilot, test, trial]
+    - [stakeholders, buy-in, team]
+    - [document, standard, standardize]
+  strong_answer:
+    - "Starts by mapping the current process and measuring a baseline."
+    - "Finds the bottleneck, pilots a change and measures again."
+    - "Documents the new process and gets buy-in from the people using it."
+
+- id: bu-tech-10
+  text: "How would you handle a client who is unhappy with something you delivered?"
+  type: technical
+  competency: conflict
+  families: [business, marketing]
+  difficulty: 2
+  concepts:
+    - [listen, understand, acknowledge]
+    - [apologize, empathize, empathy]
+    - [root cause, issue, problem]
+    - [solution, fix, remedy, options]
+    - [follow up, follow-up]
+    - [expectations, communicate, communication]
+  strong_answer:
+    - "Listens first and acknowledges the frustration without defensiveness."
+    - "Finds the actual cause and offers options."
+    - "Follows up afterwards and resets expectations."
+
+- id: bu-beh-01
+  text: "Tell me about a time you had to work carefully with numbers or data where accuracy really mattered."
+  type: behavioral
+  competency: problem_solving
+  families: [business]
+  difficulty: 1
+  strong_answer:
+    - "Describes what was at stake if it was wrong."
+    - "Explains specific checks you used."
+    - "Gives an outcome, and any error you caught."
+
+- id: bu-beh-02
+  text: "Describe a time you influenced a decision with an analysis or a recommendation."
+  type: behavioral
+  competency: communication
+  families: [business, data]
+  difficulty: 2
+  strong_answer:
+    - "Frames the decision and who needed to make it."
+    - "Shows how you used evidence and presented options."
+    - "Says what was decided and how you know it helped."
+
+- id: bu-sit-01
+  text: "You realize you will not finish a client deliverable by the deadline. What do you do?"
+  type: situational
+  competency: deadlines
+  families: [business, marketing]
+  difficulty: 2
+  strong_answer:
+    - "Tells your manager and the client early with a specific new date or a reduced scope."
+    - "Explains what you would do to recover (prioritize, ask for help)."
+    - "Follows up after delivery to rebuild trust."

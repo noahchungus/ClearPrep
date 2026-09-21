@@ -1,0 +1,185 @@
+# Lexicons used by the deterministic answer analyzer.
+# Everything the scorer "knows" lives here (and in star_cues.yaml), so the
+# "How scoring works" page can display the exact lists in use.
+
+filler_words: [um, umm, uh, uhh, er, erm, basically, literally, kinda, sorta, whatever]
+filler_phrases:
+  - you know
+  - i mean
+  - or whatever
+  - and stuff
+  - and things like that
+  - stuff like that
+  - and all that
+  - you know what i mean
+
+hedges:
+  - i think
+  - i guess
+  - i suppose
+  - i feel like
+  - i'm not sure
+  - i am not sure
+  - i don't know
+  - i dunno
+  - maybe
+  - perhaps
+  - probably
+  - possibly
+  - sort of
+  - kind of
+  - a little bit
+  - somewhat
+  - hopefully
+  - i might
+  - not really
+  - i believe
+
+# Phrases that shrink your ownership or the size of what you did.
+weak_phrases:
+  - helped with
+  - helped out
+  - helped to
+  - was involved in
+  - was involved with
+  - worked on
+  - tried to
+  - was trying to
+  - participated in
+  - assisted with
+  - assisted in
+  - was part of
+  - i just
+  - just a
+  - did some
+  - a bit of
+
+# Vague wording that makes an answer sound unspecific.
+vague_phrases:
+  - a lot of
+  - lots of
+  - a lot
+  - stuff
+  - things
+  - a bunch
+  - various
+  - nice
+  - went well
+  - worked out
+  - really good
+  - pretty good
+  - somehow
+  - and so on
+  - etc
+  - good job
+  - many people
+  - some people
+
+strong_verbs: [led, built, designed, implemented, organized, coordinated, automated, analyzed, resolved,
+  negotiated, mentored, launched, streamlined, created, developed, delivered, initiated, drove, managed,
+  planned, proposed, presented, trained, taught, tested, debugged, deployed, optimized, reduced, increased,
+  improved, established, founded, recruited, prioritized, researched, investigated, documented, wrote,
+  redesigned, refactored, migrated, configured, monitored, audited, secured, published, produced, tutored,
+  facilitated, scheduled, simplified, converted, cut, raised, saved, grew, boosted, completed, shipped,
+  raised, volunteered, chaired, ran, ordered, mapped, measured, compared, reviewed, escalated, communicated,
+  persuaded, advocated, identified, diagnosed, repaired, fixed, split, divided, assigned, collaborated,
+  reached, asked, suggested, decided, took, made, built, set, started, began, taught]
+
+# Irregular past-tense verbs that "I <verb>ed" patterns would miss.
+irregular_past: [built, wrote, led, made, took, ran, set, met, held, chose, drew, taught, sent, spoke,
+  found, kept, gave, began, brought, told, put, cut, won, fixed, split, spent, rebuilt, rewrote, bought, sat, drove, showed, read]
+
+# Verbs ending in -ed that describe wanting/feeling/noticing rather than doing (not counted as actions).
+stative_verbs: [needed, wanted, expected, hoped, wished, liked, loved, preferred, believed, realized, noticed, discovered,
+  considered, seemed, appeared, happened, remembered, worried, cared, enjoyed, involved, interested, excited, surprised]
+
+# Words that make a sentence hypothetical or habitual ("I would...", "I always..."), so its cues are not a story.
+hypothetical_markers: ["i would", "i'd", "i'll", "i will", "would", "always", "usually", "typically", "generally", "whenever", "if i"]
+
+# Words that often mean "the specific thing you did" and count as concrete detail.
+detail_markers: [because, since, instead, specifically, for example, for instance, such as, e.g., in particular]
+
+# Generic reasons for wanting a job. They are not wrong, but they don't distinguish you.
+generic_org_phrases:
+  - great company
+  - good company
+  - amazing company
+  - awesome company
+  - innovative
+  - cutting-edge
+  - cutting edge
+  - state of the art
+  - fast-paced
+  - dynamic environment
+  - make a difference
+  - industry leader
+  - leader in
+  - leading company
+  - opportunity to grow
+  - great opportunity
+  - good opportunity
+  - amazing opportunity
+  - passionate about
+  - team player
+  - world-class
+  - world class
+  - well-known
+  - prestigious
+  - big name
+  - good reputation
+  - great reputation
+  - gain experience
+  - learn a lot
+  - looking for a job
+  - need a job
+  - good pay
+  - great culture
+
+# Topics to postpone until an offer stage / recruiter conversation.
+premature_topics: [salary, pay, vacation, benefits, "time off", pto, "work from home", remote, "hours per week", bonus, raise, promotion]
+
+# Questions that show you didn't do basic research.
+lazy_questions:
+  - what does your company do
+  - what does the company do
+  - what do you guys do
+  - what is your company about
+  - what does this company do
+
+# Values-type words to look for inside pasted "about the company" text.
+values_words: [innovation, integrity, community, diversity, inclusion, sustainability, customer, customers, service,
+  quality, safety, security, collaboration, transparency, accountability, excellence, education, mission, growth,
+  learning, ownership, impact, reliability, privacy, trust, respect, equity, accessibility, empowerment, teamwork]
+
+# Skill words we can expect in situational answers about working with others.
+stakeholder_words: [ask, talk, communicate, tell, inform, manager, supervisor, lead, team, teammate, customer, client,
+  stakeholder, user, colleague, mentor, professor, instructor, coworker, escalate, explain, listen]
+
+verification_words: [check, confirm, follow up, verify, document, review, test, double-check, make sure, ensure,
+  measure, monitor, track, report, retrospective, reflect]
+
+sequence_words: [first, second, third, then, next, after, afterwards, finally, before, once, lastly, step, initially, meanwhile]
+
+reasoning_words: [because, since, so that, therefore, which means, in order to, as a result, trade-off, tradeoff,
+  however, whereas, depends, instead, rather than, otherwise, due to, this way, that way]
+
+example_words: [for example, for instance, such as, e.g., in my project, in one project, in my class, in my internship,
+  at my job, i used, i built, i worked, in practice]
+
+# Words that suggest an "introduce yourself" answer covers present / past / future.
+intro_present: [currently, i'm a, i am a, right now, these days, i study, i'm studying, i am studying, i work, i'm working, my major, majoring]
+intro_past: [previously, before that, in the past, last year, last summer, i've worked, i have worked, i completed, i built, i led, i volunteered, my background, growing up, i started]
+intro_future: [i'm looking, i am looking, i want to, i hope to, i'd like to, i would like to, my goal, i'm excited, i am excited, looking forward, interested in, eventually, next step, aiming]
+
+# Words too generic to count as "named details" when capitalised mid-sentence.
+proper_noun_ignore: [I, I'm, I've, I'd, I'll, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, January,
+  February, March, April, May, June, July, August, September, October, November, December, English, Spanish]
+
+# Words that are boilerplate in job postings and carry little signal.
+jd_boilerplate: [experience, ability, work, working, team, teams, skills, skill, strong, required, requirements,
+  responsibilities, preferred, qualifications, candidate, candidates, position, role, job, company, opportunity,
+  looking, seeking, join, must, will, including, related, knowledge, understanding, excellent, good, great,
+  environment, years, year, degree, bachelor, bachelors, equal, employer, employment, apply, benefits, plus,
+  duties, etc, tasks, support, ensure, help, well, new, need, needs, based, use, using, across, within, may,
+  able, such, other, various, high, level, part, time, full, day, days, every, day-to-day, members, member,
+  provide, perform, participate, assist, internship, intern, interns, entry, students, student, summer]

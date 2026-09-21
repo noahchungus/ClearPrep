@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}ClearPrep{% endblock %}</title>
+  <meta name="description" content="Practice the interview you actually have. Transparent rule-based scoring plus personal written coaching from an AI coach.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23071b38'/%3E%3Cpath d='M9 22V10h6a4 4 0 010 8h-3' fill='none' stroke='%239cc4f5' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/style.css?v={{ static_v('style.css') if static_v is defined else '20260920k' }}">
+</head>
+<body class="{% block bodyclass %}{% endblock %}" data-interview-date="{{ interview_date|default('') }}">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    {% set cur_path = request.url.path %}
+    <a class="brand" href="/" aria-label="ClearPrep">
+      <span class="b-a" aria-hidden="true">Clea</span><span class="b-b" aria-hidden="true">r</span>
+      <span class="b-c" aria-hidden="true">P</span><span class="b-d" aria-hidden="true">rep</span>
+    </a>
+    <nav aria-label="Main">
+      <a href="/" {% if cur_path == '/' %}aria-current="page"{% endif %}>Home</a>
+      <a href="/practice" {% if cur_path == '/practice' or cur_path.startswith('/interview') %}aria-current="page"{% endif %}>Practice</a>
+      <a href="/prep" {% if cur_path == '/prep' %}aria-current="page"{% endif %}>Prep sheet</a>
+      <a href="/progress" {% if cur_path == '/progress' %}aria-current="page"{% endif %}>Progress</a>
+      <a href="/how-scoring-works" {% if cur_path == '/how-scoring-works' %}aria-current="page"{% endif %}>How scoring works</a>
+    </nav>
+  </div>
+</header>
+<main id="main">{% block hero %}{% endblock %}<div class="wrap {% block wrapcls %}{% endblock %}">
+  <noscript><div class="notice warn">This app needs JavaScript for the interactive interview (it uses a tiny library called htmx). Scoring itself runs on the server in Python.</div></noscript>
+  {% block content %}{% endblock %}
+</div></main>
+<footer class="site-footer"><div class="wrap">
+  <p class="footer-credit"><strong>ClearPrep</strong> — built by a community college student, for other students getting ready to interview.<br><span>Developed by Noah Chung</span></p>
+  <p><strong>AI-powered coaching, transparent scores.</strong> Every answer gets written feedback from an AI coach, which can be wrong, so treat it as advice. The scores come from named checks you can inspect on <a href="/how-scoring-works">How scoring works</a>.</p>
+  <p>Privacy: no accounts, no database, and this app stores nothing. Your history lives only in this browser. With the AI coach on, your answers and any pasted job or company text are sent to a third-party AI service to write the feedback; turn it off on the practice page to keep everything local.</p>
+  <div class="brand-watermark">
+    <img src="/static/cs50-duck.png?v={{ static_v('cs50-duck.png') if static_v is defined else '20260920k' }}" alt="CS50 rubber duck" width="70" height="42">
+    <div class="wm-caption">CS50 rubber duck</div>
+  </div>
+</div></footer>
+<script src="/static/htmx.min.js?v={{ static_v('htmx.min.js') if static_v is defined else '20260920k' }}"></script>
+<script src="/static/app.js?v={{ static_v('app.js') if static_v is defined else '20260920k' }}"></script>
+</body>
+</html>

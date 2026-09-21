@@ -1,0 +1,209 @@
+# Data / Analytics role family.
+
+- id: da-tech-01
+  text: "What is the difference between the mean, median and mode, and when is the median a better choice?"
+  type: technical
+  competency: technical
+  families: [data]
+  difficulty: 1
+  concepts:
+    - [mean, average]
+    - [median, middle]
+    - [mode, most common, most frequent]
+    - [outlier, outliers, skew, skewed]
+    - [distribution]
+  strong_answer:
+    - "Defines each in one phrase."
+    - "Explains that the median resists outliers and skew (income, house prices)."
+    - "Gives a concrete example of when the mean would mislead."
+
+- id: da-tech-02
+  text: "Explain the difference between an INNER JOIN and a LEFT JOIN."
+  type: technical
+  competency: technical
+  families: [data, software]
+  difficulty: 1
+  concepts:
+    - [inner join, inner]
+    - [left join, left outer, left]
+    - [match, matching, matches, matched]
+    - ["null", nulls, missing]
+    - [rows, row]
+    - [key, keys, column, columns, on clause]
+  strong_answer:
+    - "Says INNER returns only rows with matches in both tables."
+    - "Says LEFT keeps every left-table row and fills NULLs where nothing matches."
+    - "Gives an example, such as customers with and without orders."
+
+- id: da-tech-03
+  text: "How would you handle missing values in a dataset?"
+  type: technical
+  competency: problem_solving
+  families: [data]
+  difficulty: 2
+  concepts:
+    - [drop, remove, delete, exclude]
+    - [impute, imputation, fill, replace]
+    - [why, reason, pattern, mechanism, random]
+    - [flag, indicator]
+    - [document, assumption, assumptions, bias]
+  strong_answer:
+    - "Starts by asking why values are missing and how many."
+    - "Names options (drop, impute, flag) and their trade-offs."
+    - "Documents the choice and checks it does not bias the result."
+
+- id: da-tech-04
+  text: "What is the difference between correlation and causation? Give an example."
+  type: technical
+  competency: technical
+  families: [data]
+  difficulty: 1
+  concepts:
+    - [correlation, correlated]
+    - [causation, causal, cause]
+    - [confound, confounding, third variable, lurking, hidden variable]
+    - [experiment, randomized, a/b test, controlled]
+    - [example, for example, e.g., ice cream]
+  strong_answer:
+    - "States that two things moving together does not mean one causes the other."
+    - "Gives a clear example with a confounding variable (ice cream sales and drownings)."
+    - "Says how you would test causation: a controlled or randomized experiment."
+
+- id: da-tech-05
+  text: "What does a p-value tell you? What does it not tell you?"
+  type: technical
+  competency: technical
+  families: [data]
+  difficulty: 3
+  concepts:
+    - [null hypothesis, "null"]
+    - [probability, chance, likelihood]
+    - [significance, significant, threshold, alpha]
+    - [effect size, practical significance, importance]
+    - [sample size, sample]
+  strong_answer:
+    - "Explains it as the probability of data at least this extreme if the null hypothesis were true."
+    - "Says it is NOT the probability that the hypothesis is true or the size of an effect."
+    - "Mentions sample size and practical significance."
+
+- id: da-tech-06
+  text: "How would you present a finding from a dashboard to a non-technical manager?"
+  type: technical
+  competency: communication
+  families: [data, business]
+  difficulty: 2
+  concepts:
+    - [audience, stakeholder, manager]
+    - [takeaway, so what, insight, recommendation, recommend]
+    - [simple, plain, jargon, plain language]
+    - [chart, graph, visual, visualization]
+    - [context, baseline, compare, comparison]
+  strong_answer:
+    - "Leads with the takeaway and recommendation, not the method."
+    - "Uses one clear visual and plain language."
+    - "Provides context (compared to what?) and is honest about uncertainty."
+
+- id: da-tech-07
+  text: "What are overfitting and underfitting?"
+  type: technical
+  competency: technical
+  families: [data]
+  difficulty: 2
+  concepts:
+    - [overfit, overfitting, overfitted]
+    - [underfit, underfitting]
+    - [training, train]
+    - [test, validation, held-out, holdout, unseen]
+    - [complex, complexity, bias, variance]
+    - [regularization, cross-validation, cross validation, more data]
+  strong_answer:
+    - "Defines overfitting as memorizing training data and generalizing poorly."
+    - "Defines underfitting as a model too simple to capture the pattern."
+    - "Names how you detect and reduce it: validation data, simpler models, regularization."
+
+- id: da-tech-08
+  text: "Walk me through how you would clean a messy dataset before analysis."
+  type: technical
+  competency: problem_solving
+  families: [data]
+  difficulty: 1
+  concepts:
+    - [duplicates, duplicate, deduplicate]
+    - [missing, "null", nulls]
+    - [types, data types, format, formats, datatype]
+    - [outlier, outliers]
+    - [inconsistent, standardize, standardise, normalize, consistent, consistency]
+    - [validate, validation, check, sanity check, verify]
+    - [document, log, reproducible, script]
+  strong_answer:
+    - "Follows an ordered process: inspect, fix types, handle duplicates and missing values, check outliers."
+    - "Validates the result with sanity checks."
+    - "Keeps the cleaning reproducible and documented, not manual."
+
+- id: da-tech-09
+  text: "Which chart would you use to show (a) change over time and (b) parts of a whole, and why?"
+  type: technical
+  competency: technical
+  families: [data, marketing]
+  difficulty: 1
+  concepts:
+    - [line chart, line graph, line]
+    - [bar chart, bar, stacked bar]
+    - [pie, stacked, treemap, donut]
+    - [time, trend, over time]
+    - [label, labels, axis, clear, simple, clutter]
+  strong_answer:
+    - "Chooses a line chart for trends over time and a bar or stacked bar for parts of a whole."
+    - "Explains the reasoning (position along a common axis is easiest to read)."
+    - "Mentions clarity: labels, few categories, no clutter."
+
+- id: da-tech-10
+  text: "What is A/B testing, and how do you decide whether a result is meaningful?"
+  type: technical
+  competency: technical
+  families: [data, marketing]
+  difficulty: 2
+  concepts:
+    - [control, variant, treatment]
+    - [random, randomly, randomized, randomised, random assignment]
+    - [sample size, enough data, power]
+    - [significance, p-value, confidence, statistically]
+    - [metric, kpi, success metric]
+    - [duration, run long enough, novelty, seasonality]
+  strong_answer:
+    - "Explains randomly splitting users into control and variant."
+    - "Names a primary metric chosen in advance."
+    - "Mentions sample size, significance, and running long enough."
+
+- id: da-beh-01
+  text: "Tell me about a time you found an insight in data that changed a decision or opinion."
+  type: behavioral
+  competency: problem_solving
+  families: [data]
+  difficulty: 2
+  strong_answer:
+    - "Describes the question and the data you used."
+    - "Explains how you analyzed it and checked it was not a fluke."
+    - "Says what changed because of it (a decision, an action) with a number if possible."
+
+- id: da-beh-02
+  text: "Describe a time you had to explain data or a chart to someone non-technical."
+  type: behavioral
+  competency: communication
+  families: [data]
+  difficulty: 2
+  strong_answer:
+    - "Identifies the audience and what they needed to decide."
+    - "Shows how you simplified and confirmed understanding."
+    - "Gives an outcome or their reaction."
+
+- id: da-sit-01
+  text: "You notice the numbers in a report you already sent do not match another team's numbers. What do you do?"
+  type: situational
+  competency: ethics
+  families: [data, business]
+  difficulty: 3
+  strong_answer:
+    - "Investigates the definitions and sources first (what is being counted, when)."
+    - "Tells stakeholders promptly rather than waiting to be sure everything is fixed."
+    - "Documents the definition and agrees on one source of truth."

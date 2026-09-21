@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}ClearPrep: practice a mock interview{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Practice the interview you actually have.</h1>
+  <p>Enter the organization and position, optionally paste the job description and “about us” text, and get a mock interview with follow-up questions, a scored breakdown and personal feedback from an AI coach. Every score is explained, and no account is needed.</p>
+</section>
+
+<div id="countdown" class="countdown notice" role="status"><strong data-days></strong> · <a href="/progress">See your prep plan</a></div>
+
+{% if errors %}<div class="notice err" role="alert"><strong>Please fix the highlighted fields.</strong></div>{% endif %}
+
+{% macro opt(name, value, label, default=false) -%}
+<option value="{{ value }}" {% if form.get(name) == value or (not form.get(name) and default) %}selected{% endif %}>{{ label }}</option>
+{%- endmacro %}
+
+<form id="setup-form" method="post" action="/interview/start" {% if errors %}data-has-errors="1"{% endif %} novalidate>
+  <div class="card">
+    <fieldset>
+      <legend>1 · The job</legend>
+      <div class="grid two">
+        <div class="field">
+          <label for="org">Organization <span class="hint">Who is interviewing you? (required)</span></label>
+          <input id="org" name="org" type="text" maxlength="80" autocomplete="off" required value="{{ form.get('org','') }}" placeholder="e.g. Northwind Community Credit Union" {% if errors.org %}aria-invalid="true" aria-describedby="org-err"{% endif %}>
+          {% if errors.org %}<div class="err" id="org-err">{{ errors.org }}</div>{% endif %}
+        </div>
+        <div class="field">
+          <label for="role">Position title <span class="hint">Exactly as posted (required)</span></label>
+          <input id="role" name="role" type="text" maxlength="100" autocomplete="off" required value="{{ form.get('role','') }}" placeholder="e.g. IT Security Analyst Intern" {% if errors.role %}aria-invalid="true" aria-describedby="role-err"{% endif %}>
+          {% if errors.role %}<div class="err" id="role-err">{{ errors.role }}</div>{% endif %}
+        </div>
+        <div class="field">
+          <label for="family">Role family <span class="hint">Auto-detected from the title. Override if it guesses wrong.</span></label>
+          <select id="family" name="family">
+            {{ opt('family', 'auto', 'Auto-detect', true) }}
+            {% for key, f in families.items() %}{{ opt('family', key, f.label) }}{% endfor %}
+          </select>
+          {% if errors.family %}<div class="err">{{ errors.family }}</div>{% endif %}
+        </div>
+        <div class="field">
+          <label for="interview_date">Interview date <span class="hint">Optional. Shows a countdown and a prep plan.</span></label>
+          <input id="interview_date" name="interview_date" type="date" value="{{ form.get('interview_date','') }}">
+          {% if errors.interview_date %}<div class="err">{{ errors.interview_date }}</div>{% endif %}
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="card">
+    <fieldset>
+      <legend>2 · Personalize <span class="muted small" style="font-family:var(--sans);font-weight:400">(optional, but it makes the questions and scoring specific)</span></legend>
+      <div class="field">
+        <label for="jd_text">Job description <span class="hint">Paste the posting. Skills and tools it mentions become questions and a coverage check.</span></label>
+        <textarea id="jd_text" name="jd_text" data-max="12000" maxlength="12000" placeholder="Paste the full job posting here…">{{ form.get('jd_text','') }}</textarea>
+        <div class="hint" id="jd_text-count" aria-live="off"></div>
+      </div>
+      <div class="field">
+        <label for="about_text">About the company <span class="hint">Paste text from their site or posting. Only text you paste is ever used; nothing about the company is assumed or looked up.</span></label>
+        <textarea id="about_text" name="about_text" data-max="6000" maxlength="6000" placeholder="Paste their mission, values or “about us” text…">{{ form.get('about_text','') }}</textarea>
+        <div class="hint" id="about_text-count"></div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="card">
+    <fieldset>
+      <legend>3 · Interview settings</legend>
+      <div class="grid two">
+        <div class="field"><label for="interview_type">Interview type</label>
+          <select id="interview_type" name="interview_type">
+            {{ opt('interview_type','mixed','Mixed (recommended)', true) }}{{ opt('interview_type','behavioral','Behavioral: “tell me about a time…”') }}
+            {{ opt('interview_type','situational','Situational: “what would you do if…”') }}{{ opt('interview_type','technical','Technical concepts') }}
+          </select>{% if errors.interview_type %}<div class="err">{{ errors.interview_type }}</div>{% endif %}</div>
+        <div class="field"><label for="seniority">Level</label>
+          <select id="seniority" name="seniority">{{ opt('seniority','internship','Internship', true) }}{{ opt('seniority','entry','Entry level') }}</select></div>
+        <div class="field"><label for="n">Number of questions <span class="hint">3 to 15, plus an opener and a closing “any questions for us?”</span></label>
+          <input id="n" name="n" type="number" min="3" max="15" value="{{ form.get('n') or 6 }}">{% if errors.n %}<div class="err">{{ errors.n }}</div>{% endif %}</div>
+        <div class="field"><label for="difficulty">Difficulty</label>
+          <select id="difficulty" name="difficulty">{{ opt('difficulty','mixed','Mixed: warm up, then harder', true) }}{{ opt('difficulty','easy','Easy') }}{{ opt('difficulty','medium','Medium') }}{{ opt('difficulty','hard','Hard (probing)') }}</select></div>
+        <div class="field"><label for="time_limit">Pressure mode <span class="hint">Countdown per answer</span></label>
+          <select id="time_limit" name="time_limit">{{ opt('time_limit','0','Off (count-up timer)', true) }}{{ opt('time_limit','60','60 seconds') }}{{ opt('time_limit','90','90 seconds') }}{{ opt('time_limit','120','2 minutes') }}{{ opt('time_limit','180','3 minutes') }}</select></div>
+        <div class="field"><label class="check" style="margin-top:26px"><input type="checkbox" name="followups" value="1" {% if not form or form.get('followups') == '1' %}checked{% endif %}> Ask follow-up questions</label>
+          <span class="hint">Like a real interviewer, probe the weakest point of an answer.</span></div>
+        <div class="field"><label class="check" style="margin-top:26px"><input type="checkbox" name="ai_coach" value="1" {% if not form or form.get('ai') == '1' %}checked{% endif %}> Use the AI coach</label>
+          <span class="hint">Personal written feedback, smarter follow-ups and a study plan. <strong>Your answers and any pasted job or company text are sent to a third-party AI service to write it.</strong> Uncheck to stay fully rule-based and keep everything on this app.</span></div>
+      </div>
+    </fieldset>
+    <div class="row" style="margin-top:8px">
+      <button class="btn primary" type="submit">Start mock interview →</button>
+      <button class="btn ghost" type="button" id="fill-sample" title="Fills the form with a fictional company so you can try the app">Try a sample</button>
+      <button class="btn quiet" type="submit" formaction="/prep" formnovalidate>Prep sheet only</button>
+    </div>
+  </div>
+</form>
+{% endblock %}

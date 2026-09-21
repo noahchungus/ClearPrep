@@ -1,0 +1,225 @@
+# Software / IT role family. Technical questions list `concepts`: groups of acceptable wordings.
+# The analyzer checks that the ideas are MENTIONED, not that they are correct.
+
+- id: sw-tech-01
+  text: "What is the difference between an array (or list) and a hash map (dictionary), and when would you use each?"
+  type: technical
+  competency: technical
+  families: [software]
+  difficulty: 1
+  concepts:
+    - [array, list, arrays, lists]
+    - [hash map, hashmap, dictionary, hash table, key-value, key value, map]
+    - [lookup, "o(1)", constant time, constant-time, average constant]
+    - [index, indexed, order, ordered, sequence]
+    - [collision, collisions, hash function]
+  strong_answer:
+    - "Defines both in a sentence: ordered, indexed collection versus key-to-value mapping."
+    - "Explains lookup: index access versus key lookup with average constant time."
+    - "Gives a use case for each and mentions a trade-off (memory, ordering, collisions)."
+
+- id: sw-tech-02
+  text: "Explain what happens when you type a URL into a browser and press Enter."
+  type: technical
+  competency: technical
+  families: [software]
+  difficulty: 2
+  concepts:
+    - [dns, domain name]
+    - [tcp, connection, handshake]
+    - [http, https, request]
+    - [server, response]
+    - [render, rendering, dom, html, browser parses]
+    - [tls, ssl, certificate, encryption, encrypted]
+  strong_answer:
+    - "Walks through in order: DNS lookup, connection, request, response, rendering."
+    - "Mentions HTTPS/TLS and what the server returns."
+    - "Stays high level but shows you know where each layer fits."
+
+- id: sw-tech-03
+  text: "What is the difference between a process and a thread?"
+  type: technical
+  competency: technical
+  families: [software]
+  difficulty: 2
+  concepts:
+    - [process, processes]
+    - [thread, threads]
+    - [memory, address space, shared memory]
+    - [concurrency, parallel, parallelism, concurrent]
+    - [context switch, scheduling, scheduler]
+    - [race condition, deadlock, synchronization, lock, mutex]
+  strong_answer:
+    - "Defines a process as an isolated program instance and a thread as a unit of execution inside it."
+    - "Explains that threads share memory and processes generally do not."
+    - "Mentions a consequence such as race conditions or the cost of context switching."
+
+- id: sw-tech-04
+  text: "How would you debug a function that sometimes returns the wrong result?"
+  type: technical
+  competency: problem_solving
+  families: [software]
+  difficulty: 2
+  concepts:
+    - [reproduce, reproduction, reproducible]
+    - [log, logging, print, prints]
+    - [debugger, breakpoint, breakpoints, step through]
+    - [isolate, narrow, bisect, minimal, smaller]
+    - [race condition, state, input, environment, timing, concurrency]
+    - [test, unit test, regression test, test case]
+  strong_answer:
+    - "Starts by reproducing the problem and finding the smallest failing input."
+    - "Uses a method (logging, debugger, bisecting) rather than guessing."
+    - "Ends by adding a test so it stays fixed."
+
+- id: sw-tech-05
+  text: "What is version control, and how would you use Git when working on a team?"
+  type: technical
+  competency: technical
+  families: [software]
+  difficulty: 1
+  concepts:
+    - [branch, branches, branching]
+    - [commit, commits]
+    - [merge, rebase]
+    - [pull request, code review, review]
+    - [conflict, merge conflict, conflicts]
+    - [main, master, trunk]
+  strong_answer:
+    - "Explains that it tracks changes and lets people work in parallel safely."
+    - "Describes a workflow: branch, commit small changes, pull request, review, merge."
+    - "Mentions how you resolve merge conflicts."
+
+- id: sw-tech-06
+  text: "Explain the difference between SQL (relational) and NoSQL databases."
+  type: technical
+  competency: technical
+  families: [software, data]
+  difficulty: 2
+  concepts:
+    - [relational, tables, schema]
+    - [sql, structured query language]
+    - [nosql, document, key-value, mongodb]
+    - [acid, transaction, transactions, consistency]
+    - [scale, scaling, horizontal, horizontally]
+    - [join, joins]
+  strong_answer:
+    - "Contrasts structured schemas and joins with flexible, often denormalized models."
+    - "Mentions transactions/consistency versus scaling and flexibility."
+    - "Says how you would choose for a given application."
+
+- id: sw-tech-07
+  text: "What is object-oriented programming? Explain encapsulation, inheritance and polymorphism."
+  type: technical
+  competency: technical
+  families: [software]
+  difficulty: 1
+  concepts:
+    - [encapsulation, private, hide, hiding, hidden]
+    - [inheritance, subclass, extends, parent class, child class]
+    - [polymorphism, override, overriding, interface]
+    - [class, object, instance, objects]
+    - [abstraction, abstract]
+  strong_answer:
+    - "Defines classes and objects, then each of the three ideas in one sentence."
+    - "Gives a small example (Animal, Dog) or a real one from your own code."
+    - "Notes a downside or a time composition is better than inheritance."
+
+- id: sw-tech-08
+  text: "What is a REST API, and what makes an API RESTful?"
+  type: technical
+  competency: technical
+  families: [software]
+  difficulty: 2
+  concepts:
+    - [http, get, post, put, delete]
+    - [resource, resources, endpoint, endpoints, url]
+    - [stateless]
+    - [json]
+    - [status code, status codes, "200", "404"]
+    - [client, server]
+  strong_answer:
+    - "Describes resources identified by URLs and manipulated with HTTP methods."
+    - "Mentions statelessness and common status codes."
+    - "Gives a concrete endpoint example (GET /users/42)."
+
+- id: sw-tech-09
+  text: "What is Big-O notation, and why does it matter?"
+  type: technical
+  competency: technical
+  families: [software]
+  difficulty: 2
+  concepts:
+    - [time complexity, runtime, running time]
+    - [space complexity, memory]
+    - ["o(n)", linear]
+    - ["o(1)", constant]
+    - ["o(log n)", logarithmic, binary search]
+    - ["o(n^2)", quadratic, nested loop, n squared, "n²"]
+    - [scale, input size, grows, growth]
+  strong_answer:
+    - "Says it describes how running time or memory grows with input size."
+    - "Gives examples of common classes (constant, log, linear, quadratic)."
+    - "Explains why it matters for large inputs, with one example from your own code."
+
+- id: sw-tech-10
+  text: "How do you make sure the code you write is correct and maintainable?"
+  type: technical
+  competency: technical
+  families: [software]
+  difficulty: 1
+  concepts:
+    - [test, tests, testing, unit test, unit tests]
+    - [code review, review, pull request]
+    - [readable, readability, naming, clean code]
+    - [comment, comments, documentation, docstring, docstrings]
+    - [refactor, refactoring]
+    - [lint, linter, style, formatting, ci]
+  strong_answer:
+    - "Names specific practices: tests, code review, naming, small functions, documentation."
+    - "Gives an example where a practice caught a real problem."
+    - "Shows you balance quality with delivery time."
+
+- id: sw-beh-01
+  text: "Tell me about a technical project you are proud of. What was your role?"
+  type: behavioral
+  competency: problem_solving
+  families: [software]
+  difficulty: 1
+  strong_answer:
+    - "States what the project does, the tech used and your specific contribution."
+    - "Describes one real technical challenge and how you solved it."
+    - "Gives an outcome: users, performance, what you learned, what you would improve."
+
+- id: sw-beh-02
+  text: "Describe a time you were stuck on a bug for a long time. How did you get unstuck?"
+  type: behavioral
+  competency: problem_solving
+  families: [software]
+  difficulty: 2
+  strong_answer:
+    - "Describes the bug and why it was hard to find."
+    - "Shows a systematic approach and when you asked for help."
+    - "Names the root cause and what you now do to catch this class of bug."
+
+- id: sw-sit-01
+  text: "A senior developer leaves many critical comments on your first pull request. How do you respond?"
+  type: situational
+  competency: conflict
+  families: [software]
+  difficulty: 2
+  strong_answer:
+    - "Treats it as learning; reads each comment and asks questions about the reasoning."
+    - "Fixes what is right and respectfully discusses what you disagree with."
+    - "Notes patterns to avoid repeating the same feedback."
+
+- id: sw-sit-02
+  text: "You are asked to ship a feature by Friday but you find a security problem in the design. What do you do?"
+  type: situational
+  competency: ethics
+  families: [software, cybersecurity]
+  difficulty: 3
+  strong_answer:
+    - "Raises the issue right away with the lead, with a clear description of the risk."
+    - "Proposes options: a quick mitigation, a reduced scope or a delayed launch."
+    - "Documents the decision and follows up so it is not forgotten."

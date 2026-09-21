@@ -1,0 +1,219 @@
+# Marketing / Communications role family.
+
+- id: mk-tech-01
+  text: "How would you measure the success of a social media campaign?"
+  type: technical
+  competency: technical
+  families: [marketing]
+  difficulty: 1
+  concepts:
+    - [goal, objective, objectives, goals]
+    - [engagement, likes, comments, shares]
+    - [reach, impressions]
+    - [conversion, conversions, clicks, click-through, ctr]
+    - [kpi, metric, metrics]
+    - [baseline, benchmark, compare]
+    - [audience]
+  strong_answer:
+    - "Starts with the campaign goal, then chooses metrics that match it."
+    - "Distinguishes vanity metrics (likes) from outcome metrics (conversions, sign-ups)."
+    - "Mentions comparing to a baseline or previous campaign."
+
+- id: mk-tech-02
+  text: "What is the difference between SEO and paid search?"
+  type: technical
+  competency: technical
+  families: [marketing]
+  difficulty: 1
+  concepts:
+    - [seo, organic]
+    - [paid, ppc, sem, ads]
+    - [keywords, keyword]
+    - [cost, budget, pay per click]
+    - [time, long-term, long term, immediate, results]
+    - [intent, search intent]
+  strong_answer:
+    - "Says SEO earns organic rankings over time and paid search buys placement per click."
+    - "Compares cost, speed and durability."
+    - "Explains when you would combine them."
+
+- id: mk-tech-03
+  text: "How would you define the target audience for a new product?"
+  type: technical
+  competency: problem_solving
+  families: [marketing]
+  difficulty: 2
+  concepts:
+    - [demographics, demographic]
+    - [needs, pain points, problems, pain point]
+    - [research, survey, surveys, interviews, data]
+    - [persona, personas, segment, segmentation]
+    - [behavior, behaviour, psychographics]
+    - [test, validate, validation]
+  strong_answer:
+    - "Starts with who has the problem the product solves."
+    - "Uses research (surveys, interviews, data) rather than assumptions."
+    - "Defines a segment or persona and plans to test it."
+
+- id: mk-tech-04
+  text: "Walk me through how you would plan a content calendar."
+  type: technical
+  competency: problem_solving
+  families: [marketing]
+  difficulty: 1
+  concepts:
+    - [goals, objectives, goal]
+    - [audience]
+    - [channels, platform, platforms, channel]
+    - [frequency, cadence, schedule]
+    - [themes, pillars, topics, theme]
+    - [measure, analytics, performance]
+    - [adjust, iterate, refine]
+  strong_answer:
+    - "Starts from goals and audience, then chooses channels."
+    - "Sets a realistic cadence with themes."
+    - "Reviews performance and adjusts."
+
+- id: mk-tech-05
+  text: "What makes a good email subject line, and how would you test it?"
+  type: technical
+  competency: technical
+  families: [marketing]
+  difficulty: 1
+  concepts:
+    - [clear, concise, short, length]
+    - [personalize, personalization, personalized, name]
+    - [urgency, curiosity, value]
+    - [a/b test, split test, variant, ab test]
+    - [open rate, opens]
+    - [audience, segment]
+    - [spam]
+  strong_answer:
+    - "Names qualities: clear, short, relevant, honest."
+    - "Describes an A/B test with one variable at a time."
+    - "Mentions measuring open and click rates on a sufficient sample."
+
+- id: mk-tech-06
+  text: "What is a marketing funnel?"
+  type: technical
+  competency: technical
+  families: [marketing]
+  difficulty: 1
+  concepts:
+    - [awareness]
+    - [consideration, interest]
+    - [conversion, purchase, decision]
+    - [retention, loyalty, advocacy]
+    - [top of funnel, middle, bottom]
+    - [metrics, measure]
+  strong_answer:
+    - "Describes stages from awareness to consideration to conversion, and retention."
+    - "Matches a tactic and a metric to each stage."
+    - "Notes that real customer journeys are not always linear."
+
+- id: mk-tech-07
+  text: "How would you handle negative comments on a brand's social media page?"
+  type: technical
+  competency: conflict
+  families: [marketing]
+  difficulty: 2
+  concepts:
+    - [respond, reply, response]
+    - [quickly, timely, promptly]
+    - [empathy, apologize, acknowledge, empathize]
+    - [private, dm, direct message, offline]
+    - [policy, guidelines, guideline]
+    - [escalate, team]
+    - [transparent, delete]
+  strong_answer:
+    - "Responds quickly and publicly with empathy, then moves details to a private channel."
+    - "Follows a documented policy (when to escalate or remove abusive content)."
+    - "Uses feedback to inform the team."
+
+- id: mk-tech-08
+  text: "How would you use Google Analytics to understand website performance?"
+  type: technical
+  competency: technical
+  families: [marketing, data]
+  difficulty: 2
+  concepts:
+    - [traffic, sessions, users]
+    - [source, channel, medium, referral]
+    - [bounce rate, engagement, engaged]
+    - [conversion, goal, event, events]
+    - [pages, landing page, landing pages]
+    - [audience, demographics]
+    - [segment, segments]
+  strong_answer:
+    - "Starts with a question and a goal (for example, sign-ups)."
+    - "Looks at traffic sources, top pages and conversions."
+    - "Segments to find what is different and proposes a change to test."
+
+- id: mk-tech-09
+  text: "What is the difference between a brand awareness campaign and a lead generation campaign?"
+  type: technical
+  competency: technical
+  families: [marketing]
+  difficulty: 2
+  concepts:
+    - [awareness, reach, impressions]
+    - [lead, leads, conversion, sign-up, signup]
+    - [metrics, kpi, kpis]
+    - [audience, cold, warm]
+    - [call to action, cta]
+    - [funnel]
+  strong_answer:
+    - "Contrasts reaching many people with capturing contact details or actions."
+    - "Names the different metrics for each."
+    - "Explains how the calls to action and audiences differ."
+
+- id: mk-tech-10
+  text: "How do you keep a brand voice consistent across channels?"
+  type: technical
+  competency: communication
+  families: [marketing]
+  difficulty: 1
+  concepts:
+    - [brand voice, tone, style guide, voice]
+    - [guidelines, guide, guideline]
+    - [audience]
+    - [templates, examples, template]
+    - [review, approval, approve]
+    - [channel, platform, adapt]
+  strong_answer:
+    - "Uses a style guide with examples of do and do-not."
+    - "Adapts tone to each channel while keeping core voice."
+    - "Has a review step."
+
+- id: mk-beh-01
+  text: "Tell me about a creative project you conceived and carried out, such as a portfolio, campaign or club event."
+  type: behavioral
+  competency: initiative
+  families: [marketing]
+  difficulty: 1
+  strong_answer:
+    - "Describes the goal and audience."
+    - "Shows what you personally created and the decisions you made."
+    - "Gives a result: reach, feedback, attendance."
+
+- id: mk-beh-02
+  text: "Describe a time you used data or feedback to change a creative decision."
+  type: behavioral
+  competency: problem_solving
+  families: [marketing]
+  difficulty: 2
+  strong_answer:
+    - "States what you originally planned and the evidence that challenged it."
+    - "Explains the change and how you tested it."
+    - "Gives the impact and what you learned."
+
+- id: mk-sit-01
+  text: "A campaign you launched is performing far below expectations after one week. What do you do?"
+  type: situational
+  competency: problem_solving
+  families: [marketing]
+  difficulty: 2
+  strong_answer:
+    - "Checks the basics first: targeting, tracking, creative, landing page."
+    - "Forms a hypothesis and tests one change at a time."
+    - "Keeps stakeholders informed with a recovery plan."

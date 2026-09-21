@@ -1,0 +1,42 @@
+{% if p.sessions == 0 %}
+<div class="card center">
+  <h2>No sessions yet</h2>
+  <p class="muted">Finish a mock interview and your scores will show up here so you can watch each dimension improve.</p>
+  <a class="btn primary" href="/practice">Start your first mock interview</a>
+</div>
+{% if p.plan %}<div class="card"><h3>Your prep plan{% if p.days_left is not none and p.days_left >= 0 %} ({{ p.days_left }} day{{ '' if p.days_left == 1 else 's' }} left){% endif %}</h3><ul class="plain">{% for s in p.plan %}<li>{{ s }}</li>{% endfor %}</ul></div>{% endif %}
+{% else %}
+<div class="grid two">
+  <div class="card"><div class="stat">{{ p.sessions }}</div><div class="stat-l">practice session{{ '' if p.sessions == 1 else 's' }}</div></div>
+  <div class="card"><div class="stat">{{ p.latest.overall }}</div><div class="stat-l">latest overall score{% if p.change is not none %} · <strong>{{ '+' if p.change > 0 }}{{ p.change }}</strong> since you started{% endif %}</div></div>
+  {% if p.days_left is not none %}<div class="card"><div class="stat">{% if p.days_left >= 0 %}{{ p.days_left }}{% else %}–{% endif %}</div><div class="stat-l">{% if p.days_left >= 0 %}day{{ '' if p.days_left == 1 else 's' }} until your interview ({{ p.interview_date }}){% else %}interview date has passed{% endif %}</div></div>{% endif %}
+</div>
+
+<div class="card">
+  <h3>Score trend</h3>
+  {% if p.sessions < 2 %}<p class="muted small">Do one more session to see a trend line. Here is your first result.</p>{% endif %}
+  {% set c = p.chart %}
+  <svg class="chart" viewBox="0 0 {{ c.w }} {{ c.h }}" role="img" aria-label="Line chart of overall and per-dimension scores over {{ p.sessions }} sessions">
+    {% for g in c.grid %}<line class="grid-line" x1="{{ c.pad_l }}" x2="{{ c.w - c.pad_r }}" y1="{{ g.y }}" y2="{{ g.y }}"/><text x="4" y="{{ g.y + 4 }}">{{ g.v }}</text>{% endfor %}
+    {% for d in ['relevance','structure','specificity','concision','confidence'] %}{% if p.sessions > 1 %}<polyline class="line c-{{ d }}" style="opacity:.55;stroke-width:1.6" points="{{ p.lines[d]|join(' ') }}"/>{% endif %}{% endfor %}
+    {% if p.sessions > 1 %}<polyline class="line c-overall" points="{{ p.lines.overall|join(' ') }}"/>{% endif %}
+    {% for x, y in p.dots %}<circle cx="{{ x }}" cy="{{ y }}" r="4" class="c-overall" style="fill:currentColor"/>{% endfor %}
+  </svg>
+  <div class="legend"><span class="c-overall"><span class="swatch" style="background:currentColor"></span>Overall</span>{% for d, l in p.dim_labels.items() %}<span class="c-{{ d }}"><span class="swatch" style="background:currentColor;opacity:.6"></span>{{ l }}</span>{% endfor %}</div>
+</div>
+
+<div class="grid two">
+  <div class="card"><h3>Focus next</h3>
+    <p>Your weakest dimensions in the latest session: <strong>{{ p.weakest|join(' and ') }}</strong>.</p>
+    {% if p.recurring %}<p class="small muted">Recurring in your last sessions:</p><ul class="plain">{% for r in p.recurring %}<li><strong>{{ r.label }}</strong> (in {{ r.times }} sessions). {{ r.drill }}</li>{% endfor %}</ul>{% endif %}
+    {% if p.latest.priorities %}<p class="small muted">From the latest report: {{ p.latest.priorities|join(' · ') }}</p>{% endif %}</div>
+  {% if p.plan %}<div class="card"><h3>Prep plan{% if p.days_left is not none and p.days_left >= 0 %} · {{ p.days_left }} day{{ '' if p.days_left == 1 else 's' }} left{% endif %}</h3><ul class="plain">{% for s in p.plan %}<li>{{ s }}</li>{% endfor %}</ul></div>
+  {% else %}<div class="card"><h3>Prep plan</h3><p class="muted small">Add your interview date on the <a href="/practice">setup page</a> to get a day-by-day plan.</p></div>{% endif %}
+</div>
+
+<div class="card"><h3>Session history</h3>
+  <div class="table-scroll"><table><thead><tr><th>Date</th><th>Interview</th><th>Overall</th><th>Rel.</th><th>Struct.</th><th>Spec.</th><th>Conc.</th><th>Conf.</th></tr></thead><tbody>
+  {% for h in p.history %}<tr><td>{{ h.date }}</td><td>{{ h.role }} · {{ h.org }}</td><td><span class="pill {{ band_class(h.overall) }}">{{ h.overall }}</span></td>{% for d in ['relevance','structure','specificity','concision','confidence'] %}<td>{{ h.dims[d] }}</td>{% endfor %}</tr>{% endfor %}
+  </tbody></table></div>
+</div>
+{% endif %}

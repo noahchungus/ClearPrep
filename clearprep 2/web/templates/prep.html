@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Prep sheet · ClearPrep{% endblock %}
+{% block content %}
+<section class="hero"><h1>Prep sheet</h1><p>Customize your own interview prep. Enter the organization and role, then paste the job description and any company details you have. The coach pulls out the skills and responsibilities to prepare for and suggests questions to ask the interviewer, using only what you provide.</p></section>
+<form method="post" action="/prep" class="card" novalidate>
+  <div class="grid two">
+    <div class="field"><label for="org">Organization</label><input id="org" name="org" type="text" value="{{ form.get('org','') }}" maxlength="80">{% if errors.org %}<div class="err">{{ errors.org }}</div>{% endif %}</div>
+    <div class="field"><label for="role">Position</label><input id="role" name="role" type="text" value="{{ form.get('role','') }}" maxlength="100">{% if errors.role %}<div class="err">{{ errors.role }}</div>{% endif %}</div>
+  </div>
+  <div class="field"><label for="family">Role family</label><select id="family" name="family"><option value="auto">Auto-detect</option>{% for k, f in families.items() %}<option value="{{ k }}" {% if form.get('family') == k %}selected{% endif %}>{{ f.label }}</option>{% endfor %}</select></div>
+  <div class="field"><label for="jd_text">Job description</label><textarea id="jd_text" name="jd_text" maxlength="12000">{{ form.get('jd_text','') }}</textarea></div>
+  <div class="field"><label for="about_text">About the company (pasted text only)</label><textarea id="about_text" name="about_text" maxlength="6000">{{ form.get('about_text','') }}</textarea></div>
+  <button class="btn primary" type="submit">Build prep sheet</button>
+</form>
+
+{% if p %}
+<div class="card">
+  <h2>{{ p.role }} at {{ p.org }}</h2>
+  <p><span class="pill">{{ p.family_label }}</span></p>
+  {% if p.skills %}
+    <h3>Skills the posting mentions</h3>
+    <p class="small muted">Prepare one honest example for each. Dashed = interpersonal skills, solid outline = tools.</p>
+    <div class="chips">{% for s in p.skills %}<span class="chip {{ s.kind }}">{{ s.name }}{% if s.count > 1 %} ×{{ s.count }}{% endif %}{% if s.in_requirements %} · required{% endif %}</span>{% endfor %}</div>
+  {% elif p.has_jd %}<div class="notice">No known skills were recognised in the pasted description.</div>
+  {% else %}<div class="notice">Paste a job description to see the skills and tools it mentions.</div>{% endif %}
+  {% if p.keywords %}<h3 style="margin-top:16px">Other distinctive words (TF-IDF)</h3><div class="chips">{% for k in p.keywords %}<span class="chip">{{ k }}</span>{% endfor %}</div>{% endif %}
+  {% if p.duties %}<h3 style="margin-top:16px">Responsibilities listed (your pasted text)</h3><ul class="plain">{% for d in p.duties %}<li>{{ d }}</li>{% endfor %}</ul><p class="small muted">Turn each into a story: when did you do something like this?</p>{% endif %}
+</div>
+{% if p.has_about %}<div class="card"><h3>Themes in the company text you pasted</h3>{% if p.about_keywords %}<div class="chips">{% for k in p.about_keywords %}<span class="chip">{{ k }}</span>{% endfor %}</div><p class="small muted" style="margin-top:8px">Use the ones that are genuinely true for you in “Why {{ p.org }}?”. The coach checks your answer against this list.</p>{% else %}<p class="muted">Nothing distinctive was found.</p>{% endif %}</div>{% endif %}
+<div class="card">
+  <h2>Questions you could ask them</h2>
+  <p class="small muted">Prepare 3 to 4 and ask 2 or 3. Adapt the wording to sound like you.</p>
+  {% for a in p.ask %}<div class="fix" style="border-color:var(--blue)"><b>{{ a.text }}</b><span class="muted small">{{ a.why }}</span></div>{% endfor %}
+</div>
+{% endif %}
+{% endblock %}

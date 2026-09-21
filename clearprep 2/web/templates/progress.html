@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Progress · ClearPrep{% endblock %}
+{% block content %}
+<section class="hero"><h1>Your progress</h1>
+  <p>Trends across your practice sessions and a countdown plan for your interview date. History is stored only in this browser.</p></section>
+<div id="progress" hx-post="/progress/render" hx-trigger="load" hx-vals='js:{history: itHistoryJSON(), interview_date: itDate()}' hx-swap="innerHTML">
+  <div class="card muted">Loading your history…</div>
+</div>
+<div class="row no-print" style="margin-top:8px"><button class="btn ghost" id="export-history" type="button">Export history (JSON)</button><button class="btn quiet" id="clear-history" type="button">Clear history</button></div>
+{% endblock %}

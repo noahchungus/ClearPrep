@@ -1,0 +1,80 @@
+{% from "_macros.html" import bars, star_chips, checks, legend, coach_avatar %}
+{% set q = view.question %}
+<div class="card">
+  <div class="q-meta"><span>Feedback · {{ comp.label }}</span>{% if view.record.duration %}<span class="pill">{{ view.record.duration|mmss }} taken</span>{% endif %}</div>
+  <h2 class="question" style="font-size:1.2rem" data-focus tabindex="-1">{{ q.text }}</h2>
+  <div class="score-head">
+    <div class="big-score {{ band_class(a.overall) }}" role="img" aria-label="Overall score {{ a.overall }} out of 100">{{ a.overall }}</div>
+    {{ bars(dims) }}
+  </div>
+  {% if a.star %}{{ star_chips(a.star) }}{% endif %}
+  <p class="small muted" style="margin-top:10px">Scores reflect structure and delivery signals only. They can’t tell if your story is impressive or a technical claim is correct.</p>
+</div>
+
+{% if ai_on %}
+{% if ai_available() %}
+<form id="coach-panel" class="card coach-card coach-loading" hx-post="/interview/coach" hx-trigger="load" hx-target="this" hx-swap="outerHTML" aria-live="polite">
+  <input type="hidden" name="state" value="{{ state_json }}">
+  <div class="coach-head">{{ coach_avatar() }}<div><h3>Your coach is reading your answer…</h3><span class="muted small">This usually takes a few seconds. The automated scores above are already final.</span></div></div>
+  <div class="skeleton" aria-hidden="true"><i></i><i></i><i style="width:70%"></i></div>
+</form>
+{% else %}
+<div class="card coach-card"><div class="coach-head">{{ coach_avatar() }}<div><h3>Your coach</h3></div></div>
+  <div class="notice">The AI coach is turned on for this interview, but this server has no AI API key yet, so you’re seeing the rule-based feedback only. Add a key to the server’s <code>.env</code> file (see <code>.env.example</code>) and restart to switch on the written coaching.</div></div>
+{% endif %}
+{% endif %}
+
+<div class="card">
+  <h3>Your answer, annotated</h3>
+  <div class="answer-box">{{ a.text|highlight(a.highlights) }}</div>
+  {{ legend() }}
+  {% if view.record.followup %}<p class="small muted" style="margin-top:10px"><strong>Follow-up asked:</strong> {{ view.record.followup.text }} {% if view.record.followup.skipped %}<em>(skipped)</em>{% endif %}<br>The score above includes your follow-up answer.</p>{% endif %}
+</div>
+
+{% if fixes %}
+<div class="card">
+  <h3>Automated checks: fix these first</h3>
+  {% for f in fixes %}<div class="fix"><b>{{ f.label }} <span class="muted small">· {{ DIM_LABELS[f.dimension] }} · −{{ '%g' % f.lost }} pts</span></b>{{ f.detail }}</div>{% endfor %}
+  {% if strengths %}<h3 style="margin-top:16px">What worked</h3><ul class="plain">{% for s in strengths %}<li><strong>{{ s.label }}.</strong> {{ s.detail }}</li>{% endfor %}</ul>{% endif %}
+</div>
+{% elif strengths %}
+<div class="card"><h3>What worked</h3><ul class="plain">{% for s in strengths %}<li><strong>{{ s.label }}.</strong> {{ s.detail }}</li>{% endfor %}</ul></div>
+{% endif %}
+
+{% if scaffold %}
+<div class="card">
+  <h3>Build it with your own facts</h3>
+  <p class="small muted">This coach doesn’t write answers for you (that would be making things up). Fill in these blanks with what actually happened, then say it aloud.</p>
+  <div class="scaffold">
+    {% for s in scaffold %}<div class="sc"><b>{{ s.label }}</b> <span class="pill {{ 'ok' if s.status == 'weak' else 'low' }}">{{ 'weak' if s.status == 'weak' else 'missing' }}</span><div>{{ s.prompt }}</div><div class="blank">→ Your answer: ______________________________</div></div>{% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<div class="card">
+  <h3>Why these scores</h3>
+  <p class="small muted">Open a dimension to see every check, the points it earned and the exact words in your answer that triggered it.</p>
+  {{ checks(a) }}
+</div>
+
+<div class="card">
+  <h3>What a strong answer includes</h3>
+  <p class="small muted">Interviewers are looking for: {{ comp.looks_for }}</p>
+  <ul class="plain">{% for pnt in strong_points %}<li>{{ pnt }}</li>{% endfor %}</ul>
+  {% if a.concepts and a.concepts.missing %}<p class="small"><strong>Ideas not mentioned:</strong> {{ a.concepts.missing|join(', ') }}. (The coach only checks that these ideas appear, not that what you said about them is right.)</p>{% endif %}
+  {% if a.jd and a.jd.missing %}<p class="small muted">Skills from the job description you didn’t mention here: {{ a.jd.missing|join(', ') }}. Only mention them where it’s honest.</p>{% endif %}
+  {% if exemplar %}
+  <details style="margin-top:10px"><summary>See an example answer structure ({{ exemplar.scenario }})</summary>
+    <div class="body">
+      <p class="small muted">A hand-written example showing structure, not something to copy. Your facts will differ. {{ exemplar.note }}</p>
+      {% for s in exemplar.sentences %}<div class="ex-sent">{% if s.label %}<span class="ex-tag">{{ s.label }}</span>{% endif %}{{ s.text }}</div>{% endfor %}
+    </div>
+  </details>
+  <details><summary>Fill-in-the-blank scaffold for this competency</summary><div class="body scaffold">
+    {% for s in full_scaffold %}<div class="sc"><b>{{ s.label }}</b><div>{{ s.prompt }}</div></div>{% endfor %}</div></details>
+  {% endif %}
+</div>
+
+<form class="row no-print" hx-post="/interview/next" style="margin-bottom:18px"><input type="hidden" name="state" value="{{ state_json }}">
+  <button class="btn primary" type="submit" data-focus>{% if view.is_last %}Finish interview →{% else %}Next question →{% endif %}</button>
+  <span class="htmx-indicator muted small">Loading…</span></form>

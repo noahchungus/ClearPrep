@@ -1,0 +1,694 @@
+# General questions: apply to every role family.
+# Fields: id, text ({org}/{role} are filled in), type (opener|motivation|behavioral|situational),
+#         competency, families, difficulty (1 warm-up .. 3 probing), strong_answer (what a strong answer contains).
+# Optional: profile (intro|why_org overrides the answer-scoring profile).
+
+# ---------------------------------------------------------------- openers
+- id: gen-open-01
+  text: "Tell me about yourself."
+  type: opener
+  profile: intro
+  competency: motivation
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Runs present, then past, then future: who you are now, the most relevant background, why this role is next."
+    - "Picks two or three highlights that match the job instead of reciting a resume."
+    - "Lasts about 60 to 90 seconds and ends by linking back to the role."
+
+- id: gen-open-02
+  text: "Walk me through your background and what led you to apply for the {role} position."
+  type: opener
+  profile: intro
+  competency: motivation
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Tells a short story with a clear thread (classes, projects, experiences) that leads to this role."
+    - "Names specific things you did (a project, a course, a job), not just interests."
+    - "Ends with why this role is the logical next step."
+
+# ---------------------------------------------------------------- motivation
+- id: gen-mot-01
+  text: "Why do you want to work at {org}?"
+  type: motivation
+  profile: why_org
+  competency: motivation
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Gives two or three reasons that are specific to this organization (something you actually read or heard), not reasons that fit any employer."
+    - "Connects those reasons to your own background, interests or goals."
+    - "Sounds like genuine curiosity, not flattery. Avoids stock phrases like 'great company' or 'fast-paced'."
+
+- id: gen-mot-02
+  text: "What about the {role} role at {org} appeals to you most?"
+  type: motivation
+  profile: why_org
+  competency: motivation
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Names a specific part of the work (a task, tool or responsibility) and why it interests you."
+    - "Shows you understand what the day-to-day of the role involves."
+    - "Links that interest to something you have already done or studied."
+
+- id: gen-mot-03
+  text: "Why are you interested in this field, and why now?"
+  type: motivation
+  profile: intro
+  competency: motivation
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Tells the honest origin of your interest with one concrete moment or experience."
+    - "Shows you have acted on it (classes, projects, clubs, self-study)."
+    - "Explains what you want to build toward and why this stage of your studies or career fits."
+
+- id: gen-mot-04
+  text: "Where do you see yourself in the next few years?"
+  type: motivation
+  profile: intro
+  competency: motivation
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Names a realistic direction (skills, responsibilities) instead of a title or salary."
+    - "Shows the role you are interviewing for is a genuine step toward it."
+    - "Mentions what you plan to learn and contribute along the way."
+
+- id: gen-mot-05
+  text: "What would you say is your greatest strength? Tell me how you have shown it."
+  type: behavioral
+  competency: motivation
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Names one strength that is relevant to the role, not a list."
+    - "Proves it with a short example including what you did and the result."
+    - "Avoids clichés with no evidence ('I'm a hard worker')."
+
+- id: gen-mot-06
+  text: "What is your biggest weakness, and what are you doing about it?"
+  type: behavioral
+  competency: failure
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Names a real, non-fatal weakness (not a disguised strength like 'I work too hard')."
+    - "Describes specific steps you have taken to improve it."
+    - "Shows measurable progress or a system you now use."
+
+- id: gen-mot-07
+  text: "Tell me about something you have done that you are really proud of. Why does it matter to you?"
+  type: behavioral
+  competency: motivation
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Chooses something with real effort and a clear outcome."
+    - "Explains what you personally did and what obstacles you overcame."
+    - "Shows your values through why it matters, not just what happened."
+
+# ---------------------------------------------------------------- teamwork
+- id: gen-team-01
+  text: "Tell me about a time you worked effectively as part of a team."
+  type: behavioral
+  competency: teamwork
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Describes a specific team and goal, and your specific role in it."
+    - "Shows what you did to help the group (not only what the group did)."
+    - "Gives a concrete outcome for the team and what you learned about working with others."
+
+- id: gen-team-02
+  text: "Describe a group project where one person was not contributing. What did you do?"
+  type: behavioral
+  competency: teamwork
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Explains the situation without blaming or gossiping about the person."
+    - "Shows you talked to them directly first to understand what was going on."
+    - "Describes how you kept the project on track, and how it turned out."
+
+- id: gen-team-03
+  text: "Tell me about a time you had to rely on someone else to get your work done."
+  type: behavioral
+  competency: teamwork
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Describes how you communicated expectations and checked in."
+    - "Shows how you handled the risk of depending on someone else."
+    - "Ends with the outcome and what you would do the same or differently."
+
+- id: gen-team-04
+  text: "Give an example of a time you helped a teammate who was struggling."
+  type: behavioral
+  competency: teamwork
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Notices the struggle and offers help in a respectful way."
+    - "Explains what you actually did (teaching, sharing the load, pairing) and its cost to you."
+    - "Shows the effect on the teammate and on the team's results."
+
+- id: gen-team-05
+  text: "Describe a time you worked with someone whose working style was very different from yours."
+  type: behavioral
+  competency: teamwork
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Describes the difference neutrally (fast vs careful, talker vs quiet)."
+    - "Shows how you adapted your own approach instead of expecting them to change."
+    - "Ends with a result and something you learned about collaborating."
+
+# ---------------------------------------------------------------- conflict
+- id: gen-conf-01
+  text: "Tell me about a time you disagreed with a teammate or supervisor. How did you handle it?"
+  type: behavioral
+  competency: conflict
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Explains the disagreement fairly, including the other person's reasoning."
+    - "Shows you listened, asked questions and stayed professional."
+    - "Describes how it was resolved and what the relationship looked like afterwards."
+
+- id: gen-conf-02
+  text: "Describe a time you had to deal with a difficult customer or person."
+  type: behavioral
+  competency: conflict
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Stays calm and shows empathy: listens before problem-solving."
+    - "Takes concrete steps to fix the problem within your authority, or escalates appropriately."
+    - "Ends with the outcome and what you learned about de-escalation."
+
+- id: gen-conf-03
+  text: "Tell me about a time you received critical feedback you did not fully agree with."
+  type: behavioral
+  competency: conflict
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Shows you listened and asked clarifying questions instead of getting defensive."
+    - "Separates the valid parts from the parts you disagreed with, and says so respectfully."
+    - "Explains what you changed and the result."
+
+- id: gen-conf-04
+  text: "Describe a time you had to persuade someone to see things your way."
+  type: behavioral
+  competency: conflict
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Starts by understanding the other person's concerns."
+    - "Uses evidence, an example or a small pilot rather than pressure."
+    - "Shows how the decision turned out, including if you were partly wrong."
+
+# ---------------------------------------------------------------- failure
+- id: gen-fail-01
+  text: "Tell me about a time you made a mistake. What happened?"
+  type: behavioral
+  competency: failure
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Owns the mistake plainly ('I missed...'), with no excuses or blame."
+    - "Describes what you did to fix it and to tell the people affected."
+    - "Ends with a specific change in how you work now."
+
+- id: gen-fail-02
+  text: "Describe a goal you set and did not meet. Why not?"
+  type: behavioral
+  competency: failure
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Names a real goal with a measurable target."
+    - "Analyzes honestly why it was missed, including your own part."
+    - "Shows what you changed afterwards and whether it worked."
+
+- id: gen-fail-03
+  text: "Tell me about a time you failed at something you cared about."
+  type: behavioral
+  competency: failure
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Chooses a story with real stakes, not a trivial one."
+    - "Shows how you responded emotionally and practically, without dwelling on it."
+    - "Ends with a lesson that clearly changed your behavior."
+
+- id: gen-fail-04
+  text: "Tell me about a time a project or class did not go the way you planned."
+  type: behavioral
+  competency: adaptability
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Explains what was planned and what actually happened."
+    - "Shows how you adjusted your plan quickly."
+    - "Describes the eventual outcome and how you plan differently now."
+
+# ---------------------------------------------------------------- initiative
+- id: gen-init-01
+  text: "Tell me about a time you went above and beyond what was asked of you."
+  type: behavioral
+  competency: initiative
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Makes clear what was asked and what you added."
+    - "Explains why you chose to do more (you saw a need), not to impress."
+    - "Shows a concrete benefit to others or to the result."
+
+- id: gen-init-02
+  text: "Describe a time you noticed a problem nobody else had and took action."
+  type: behavioral
+  competency: initiative
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Explains how you spotted the problem and why it mattered."
+    - "Shows you involved the right people rather than acting alone recklessly."
+    - "Gives a result: what improved, by how much."
+
+- id: gen-init-03
+  text: "Tell me about something you taught yourself. How did you go about it?"
+  type: behavioral
+  competency: initiative
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Names the skill and why you wanted to learn it."
+    - "Describes a real learning process (resources, practice, a project)."
+    - "Shows what you can do now that you could not before."
+
+- id: gen-init-04
+  text: "Give an example of a time you started something new: a project, club, or process."
+  type: behavioral
+  competency: initiative
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Explains the gap or need that started it."
+    - "Describes concrete first steps and who you got involved."
+    - "Shows what happened: adoption, growth, time saved."
+
+# ---------------------------------------------------------------- deadlines
+- id: gen-dead-01
+  text: "Describe a time you had several competing deadlines. How did you prioritize?"
+  type: behavioral
+  competency: deadlines
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Names the real deadlines and the stakes."
+    - "Explains the criteria used to prioritize (impact, due date, effort)."
+    - "Shows what you communicated or deferred, and that you delivered."
+
+- id: gen-dead-02
+  text: "Tell me about a time you were under a lot of pressure. How did you handle it?"
+  type: behavioral
+  competency: deadlines
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Describes the pressure concretely (what, how much time, what was at risk)."
+    - "Shows your method for staying effective (planning, breaking work down, asking for help)."
+    - "Ends with the outcome and how you handle pressure now."
+
+- id: gen-dead-03
+  text: "Tell me about a time you realized you were going to miss a deadline."
+  type: behavioral
+  competency: deadlines
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Shows you noticed early and told the right person promptly."
+    - "Describes the options you offered (reduced scope, extra time, help)."
+    - "Ends with the outcome and the safeguard you now use."
+
+- id: gen-dead-04
+  text: "Tell me about your system for keeping track of everything you have to do."
+  type: behavioral
+  competency: deadlines
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Describes a concrete system (calendar, task list, weekly review), not 'I just remember'."
+    - "Gives a real example of it working under a busy week."
+    - "Acknowledges where it has failed and what you adjusted."
+
+# ---------------------------------------------------------------- leadership
+- id: gen-lead-01
+  text: "Tell me about a time you led a group or a project."
+  type: behavioral
+  competency: leadership
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "States the goal and how you became the leader (assigned or volunteered)."
+    - "Shows how you organized people and made decisions."
+    - "Ends with the group's result and what you learned about leading."
+
+- id: gen-lead-02
+  text: "Describe a time you had to motivate others."
+  type: behavioral
+  competency: leadership
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Understands why the group was unmotivated before acting."
+    - "Uses specific actions (clear goals, recognition, listening), not slogans."
+    - "Shows measurable change in effort or results."
+
+- id: gen-lead-03
+  text: "Tell me about a time you led without any formal authority."
+  type: behavioral
+  competency: leadership
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Explains how you earned trust and buy-in from peers."
+    - "Shows influence through preparation, listening and clear proposals."
+    - "Gives an outcome and credits others appropriately."
+
+- id: gen-lead-04
+  text: "Describe a time you had to make an unpopular decision."
+  type: behavioral
+  competency: leadership
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Explains the decision and why it was necessary."
+    - "Shows how you communicated it honestly and respectfully."
+    - "Describes how people responded and what you would refine next time."
+
+# ---------------------------------------------------------------- adaptability
+- id: gen-adapt-01
+  text: "Tell me about a time you had to learn something new quickly."
+  type: behavioral
+  competency: adaptability
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Describes what needed to be learned and the time pressure."
+    - "Explains your method (resources, asking people, practicing on real tasks)."
+    - "Shows how quickly you became useful and the result."
+
+- id: gen-adapt-02
+  text: "Describe a time your plans changed unexpectedly. How did you respond?"
+  type: behavioral
+  competency: adaptability
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Explains what changed and what it threatened."
+    - "Shows a calm, fast replan with concrete adjustments."
+    - "Ends with the result and how you plan for change now."
+
+- id: gen-adapt-03
+  text: "Tell me about a time you worked outside your comfort zone."
+  type: behavioral
+  competency: adaptability
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Names what made it uncomfortable, honestly."
+    - "Describes how you prepared and what you did despite the discomfort."
+    - "Shows growth: what you can now do or do more easily."
+
+# ---------------------------------------------------------------- ethics
+- id: gen-eth-01
+  text: "Tell me about a time you had to make a difficult ethical decision."
+  type: behavioral
+  competency: ethics
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Presents a real dilemma where the right choice had a cost."
+    - "Shows how you reasoned (rules, impact on people) and who you consulted."
+    - "Explains what you did and what you would tell someone facing the same choice."
+
+- id: gen-eth-02
+  text: "Describe a time you had access to confidential information. How did you handle it?"
+  type: behavioral
+  competency: ethics
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Shows clear habits: need-to-know, secure handling, not discussing with others."
+    - "Gives a specific moment where you were tempted or pressured, and held the line."
+    - "Ends with trust earned, not a lecture."
+
+- id: gen-eth-03
+  text: "Tell me about a time you saw someone cutting corners or breaking a rule."
+  type: behavioral
+  competency: ethics
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Explains why it mattered and what you checked before acting."
+    - "Shows a proportionate response: talk to them or escalate to the right person."
+    - "Describes the outcome without gloating or blaming."
+
+# ---------------------------------------------------------------- problem solving
+- id: gen-prob-01
+  text: "Tell me about the most challenging problem you have solved."
+  type: behavioral
+  competency: problem_solving
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Explains why the problem was hard (unclear, complex, time pressure)."
+    - "Walks through your method: breaking it down, testing ideas, ruling things out."
+    - "Gives the solution, how you know it worked, and what you would do faster next time."
+
+- id: gen-prob-02
+  text: "Describe a time you had to solve a problem with limited information."
+  type: behavioral
+  competency: problem_solving
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Names what you did not know and how you found out what you could."
+    - "Shows a reasoned assumption and a way to check it."
+    - "Describes the outcome, including anything you got wrong and corrected."
+
+- id: gen-prob-03
+  text: "Tell me about a time you found a better way of doing something."
+  type: behavioral
+  competency: problem_solving
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Describes the old way and its cost (time, errors)."
+    - "Explains your change and how you tested it."
+    - "Gives a measurable improvement."
+
+- id: gen-prob-04
+  text: "Describe a time you had to analyze information to reach a decision."
+  type: behavioral
+  competency: problem_solving
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Says what information you gathered and why it was the right information."
+    - "Shows how you compared options and chose."
+    - "Explains the decision's outcome and how you would validate it."
+
+# ---------------------------------------------------------------- communication
+- id: gen-comm-01
+  text: "Tell me about a time you explained something complicated to someone unfamiliar with it."
+  type: behavioral
+  competency: communication
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Describes the audience and what they did not know."
+    - "Shows how you simplified (analogy, example, visuals) and checked understanding."
+    - "Ends with evidence they understood."
+
+- id: gen-comm-02
+  text: "Describe a time communication broke down. How did you fix it?"
+  type: behavioral
+  competency: communication
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Describes the misunderstanding and its consequence without blaming."
+    - "Shows how you found the cause and repaired it directly."
+    - "Names the habit you adopted to prevent it."
+
+- id: gen-comm-03
+  text: "Tell me about a presentation or talk you gave. How did you prepare?"
+  type: behavioral
+  competency: communication
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Describes the audience and goal."
+    - "Explains your preparation (structure, practice, handling questions)."
+    - "Gives feedback or an outcome, and what you would improve."
+
+- id: gen-comm-04
+  text: "Describe a time you had to deliver bad news."
+  type: behavioral
+  competency: communication
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Shows you delivered it early, directly and privately when appropriate."
+    - "Pairs the problem with options or a plan."
+    - "Describes how the person responded and what you learned."
+
+- id: gen-comm-05
+  text: "Tell me about a time you provided excellent service to a customer or user."
+  type: behavioral
+  competency: communication
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Describes the person's actual need, not just the request."
+    - "Shows specific things you did beyond the minimum."
+    - "Ends with their reaction or a measurable result."
+
+# ---------------------------------------------------------------- situational
+- id: gen-sit-01
+  text: "You notice a teammate's mistake will affect a shared deliverable due tomorrow. What do you do?"
+  type: situational
+  competency: teamwork
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Talks to the teammate first, privately and without blame."
+    - "Offers help fixing it and says what you would check to confirm it is fixed."
+    - "Brings in the lead only if the deadline is genuinely at risk."
+
+- id: gen-sit-02
+  text: "Your manager gives you two urgent tasks with the same deadline. How do you handle it?"
+  type: situational
+  competency: deadlines
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Asks which is the higher priority or what the real impact is."
+    - "Explains what you would do and in what order, with a time estimate."
+    - "Tells stakeholders early about any trade-off."
+
+- id: gen-sit-03
+  text: "You are given a task but the instructions are unclear. What do you do?"
+  type: situational
+  competency: communication
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Tries to clarify by rereading, checking examples and asking focused questions."
+    - "Confirms the understanding in writing (summarizes and asks 'is this right?')."
+    - "Delivers a small draft early to catch misunderstandings."
+
+- id: gen-sit-04
+  text: "A coworker takes credit for your work in a meeting. How do you respond?"
+  type: situational
+  competency: conflict
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Stays calm and does not call them out publicly."
+    - "Talks to the coworker privately and factually, assuming it might be a misunderstanding."
+    - "Documents your contributions going forward; escalates only if it repeats."
+
+- id: gen-sit-05
+  text: "You discover an error in work you already submitted. What do you do?"
+  type: situational
+  competency: ethics
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Tells the right person quickly, before someone else finds it."
+    - "Explains the error's impact, a fix and a timeline."
+    - "Describes the check you would add to prevent a repeat."
+
+- id: gen-sit-06
+  text: "You are asked to learn a tool you have never used, and you have one week. What is your plan?"
+  type: situational
+  competency: adaptability
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Breaks the week into stages: basics, guided practice, a real small task."
+    - "Names resources (docs, tutorials, teammates to ask) and when you would ask for help."
+    - "Defines how you will check you are ready by the deadline."
+
+- id: gen-sit-07
+  text: "A customer is upset about something outside your control. How do you respond?"
+  type: situational
+  competency: conflict
+  families: [general]
+  difficulty: 2
+  strong_answer:
+    - "Listens and acknowledges the frustration before explaining."
+    - "Focuses on what you can do, and is honest about what you cannot."
+    - "Follows up, and escalates to the right person if needed."
+
+- id: gen-sit-08
+  text: "You disagree with how your team lead wants to approach a project. What do you do?"
+  type: situational
+  competency: conflict
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Raises the concern privately, with reasons and evidence, not opinions."
+    - "Asks about the lead's reasoning; stays open to being wrong."
+    - "Commits to the decision once it is made."
+
+- id: gen-sit-09
+  text: "You have finished all your assigned work and there is time left in the day. What do you do?"
+  type: situational
+  competency: initiative
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Asks the manager or teammates whether they need help."
+    - "Names productive options (documentation, learning, improving a process)."
+    - "Shows you would check that the work you did is correct before moving on."
+
+- id: gen-sit-10
+  text: "You notice a coworker doing something that seems to go against company policy. What do you do?"
+  type: situational
+  competency: ethics
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Checks that you understand the policy and what you actually saw."
+    - "Chooses a proportionate response: talk to them or report through the proper channel."
+    - "Protects confidentiality and avoids gossip."
+
+- id: gen-sit-11
+  text: "Your team is behind schedule and morale is low. What would you do?"
+  type: situational
+  competency: leadership
+  families: [general]
+  difficulty: 3
+  strong_answer:
+    - "Diagnoses first: talks to people to understand the blockers."
+    - "Proposes concrete steps: re-prioritize, split tasks, remove one blocker."
+    - "Communicates progress honestly and recognizes effort."
+
+- id: gen-sit-12
+  text: "You are new and everyone seems too busy to help. How do you get up to speed?"
+  type: situational
+  competency: adaptability
+  families: [general]
+  difficulty: 1
+  strong_answer:
+    - "Uses available documents and tries before asking."
+    - "Asks specific, well-prepared questions at good moments."
+    - "Finds a mentor or schedules a short regular check-in."
