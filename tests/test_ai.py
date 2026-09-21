@@ -437,7 +437,7 @@ def test_feedback_page_explains_when_no_key_is_configured(use_coach):
     r = client.post("/interview/answer", data={"state": state, "answer": STORY})
     if "Follow-up" in r.text:
         r = client.post("/interview/skip-followup", data={"state": html_state(r.text)})
-    assert "AI API key" in r.text and 'hx-post="/interview/coach"' not in r.text
+    assert "isn’t available right now" in r.text and 'hx-post="/interview/coach"' not in r.text and ".env" not in r.text
 
 
 def test_ai_followup_replaces_the_rule_based_one(use_coach):
@@ -509,7 +509,8 @@ def test_report_debrief_handles_off_empty_unavailable_and_failure(use_coach):
     assert "busy right now" in r.text and "Try again" in r.text
 
 
-def test_privacy_notice_and_checkbox_are_on_the_setup_page():
+def test_privacy_notice_and_checkbox_are_on_the_setup_page(use_coach):
+    use_coach(CannedCoach([]))
     page = client.get("/practice").text
     assert 'name="ai_coach"' in page and "sent to a third-party AI service" in page
     assert re.search(r'name="ai_coach" value="1" checked', page)
@@ -559,3 +560,36 @@ def test_key_rejected_message_does_not_expose_the_env_var_or_vendor():
     with pytest.raises(ai_mod.AIError) as e:
         coach.call_json(req_for_tests())
     assert "ANTHROPIC" not in e.value.public.upper() and "claude" not in e.value.public.lower()
+
+
+def test_without_an_ai_key_visitors_see_a_clean_rule_based_mode(use_coach):
+    use_coach(unconfigured_coach())
+    page = client.get("/practice").text
+    assert 'type="checkbox" name="ai_coach"' not in page and 'name="ai_coach" value="0"' in page
+    assert "not turned on for this site" in page and "sent to a third-party AI service to write it" not in page
+    r = client.post("/interview/start", data={"org": "Acme", "role": "Software Intern", "n": "3", "ai_coach": "0"})
+    assert "AI coach off" in r.text and ".env" not in r.text and "no key" not in r.text.lower()
+
+
+def test_daily_cap_is_a_backstop_across_all_visitors():
+    rl = ai_mod.RateLimiter(per_client=100, total=100, window=3600, daily_total=3)
+    assert all(rl.allow(f"ip{i}", now=i) for i in range(3))
+    assert not rl.allow("ip9", now=4000)  # hourly window has cleared, but the daily cap holds
+    assert rl.allow("ip9", now=90000)  # a day later it resets
+
+
+def test_deployment_files_are_correct_and_hold_no_secrets():
+    import pathlib
+
+    import yaml
+
+    root = pathlib.Path(__file__).resolve().parent.parent
+    assert (root / ".python-version").read_text().strip() == "3.12"
+    cfg = yaml.safe_load((root / "render.yaml").read_text())
+    svc = cfg["services"][0]
+    assert svc["type"] == "web" and svc["runtime"] == "python" and svc["plan"] == "free" and svc["healthCheckPath"] == "/api/health"
+    assert svc["startCommand"].startswith("uvicorn web.app:app") and "$PORT" in svc["startCommand"] and "--proxy-headers" in svc["startCommand"]
+    keys = {e["key"] for e in svc["envVars"]}
+    assert "ANTHROPIC_API_KEY" not in keys and {"AI_CALLS_PER_IP_PER_HOUR", "AI_CALLS_PER_HOUR_TOTAL", "AI_CALLS_PER_DAY_TOTAL"} <= keys
+    text = (root / "render.yaml").read_text().lower()
+    assert "sk-ant" not in text and "github_pat" not in text

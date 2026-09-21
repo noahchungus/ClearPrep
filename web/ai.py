@@ -9,7 +9,8 @@ Configuration (environment variables, or a `.env` file in the project root that 
     INTERVIEW_TRAINER_MODEL      model id, default claude-opus-5 (e.g. claude-sonnet-5 costs less)
     INTERVIEW_TRAINER_EFFORT     low | medium | high, default medium (lower = faster and cheaper)
     AI_CALLS_PER_IP_PER_HOUR     default 60   (each answer uses up to 2 calls, the report 1)
-    AI_CALLS_PER_HOUR_TOTAL      default 600  (global cap; protects the bill on a public deployment)
+    AI_CALLS_PER_HOUR_TOTAL      default 600  (global hourly cap; protects the bill on a public deployment)
+    AI_CALLS_PER_DAY_TOTAL       default 4000 (global daily cap; the real backstop against a runaway bill)
 """
 from __future__ import annotations
 
@@ -57,22 +58,28 @@ load_env_file(Path(__file__).resolve().parent.parent / ".env")
 class RateLimiter:
     """Sliding-window limiter, per client and global. In-memory: best-effort protection, resets on restart."""
 
-    def __init__(self, per_client: int, total: int, window: float = 3600.0):
-        self.per_client, self.total, self.window = per_client, total, window
+    DAY = 86400.0
+
+    def __init__(self, per_client: int, total: int, window: float = 3600.0, daily_total: int | None = None):
+        self.per_client, self.total, self.window, self.daily_total = per_client, total, window, daily_total
         self._hits: dict[str, deque] = defaultdict(deque)
         self._all: deque = deque()
+        self._day: deque = deque()
         self._lock = threading.Lock()
 
     def allow(self, client: str, now: float | None = None) -> bool:
         now = time.time() if now is None else now
         with self._lock:
-            for q in (self._hits[client], self._all):
-                while q and q[0] <= now - self.window:
+            for q, span in ((self._hits[client], self.window), (self._all, self.window), (self._day, self.DAY)):
+                while q and q[0] <= now - span:
                     q.popleft()
             if len(self._hits[client]) >= self.per_client or len(self._all) >= self.total:
                 return False
+            if self.daily_total is not None and len(self._day) >= self.daily_total:
+                return False
             self._hits[client].append(now)
             self._all.append(now)
+            self._day.append(now)
             return True
 
 
@@ -91,7 +98,8 @@ class Coach:
         self._client = client
         self.model = model or os.environ.get("INTERVIEW_TRAINER_MODEL", DEFAULT_MODEL)
         self.effort = os.environ.get("INTERVIEW_TRAINER_EFFORT", "medium")
-        self.limiter = limiter or RateLimiter(_int_env("AI_CALLS_PER_IP_PER_HOUR", 60), _int_env("AI_CALLS_PER_HOUR_TOTAL", 600))
+        self.limiter = limiter or RateLimiter(_int_env("AI_CALLS_PER_IP_PER_HOUR", 60), _int_env("AI_CALLS_PER_HOUR_TOTAL", 600),
+                                              daily_total=_int_env("AI_CALLS_PER_DAY_TOTAL", 4000))
 
     # ---- availability
     def available(self) -> bool:

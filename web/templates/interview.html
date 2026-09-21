@@ -8,7 +8,7 @@
     <div><h2 style="margin:0">{{ pr.role }} <span class="muted">at {{ pr.org }}</span></h2>
     <div class="q-meta"><span class="pill">{{ pr.family_label }}{% if pr.family_source == 'title' %} · from title{% elif pr.family_source == 'job description' %} · from job description{% elif pr.family_source == 'user' %} · your choice{% endif %}</span>
     <span class="pill">{{ pr.interview_type }}</span><span class="pill">{{ pr.seniority }}</span>
-    <span class="pill {{ 'good' if pr.ai and ai_available() else '' }}">{% if not pr.ai %}AI coach off{% elif ai_available() %}AI coach on{% else %}AI coach: no key yet{% endif %}</span></div></div>
+    <span class="pill {{ 'good' if pr.ai and ai_available() else '' }}">{% if pr.ai and ai_available() %}AI coach on{% else %}AI coach off{% endif %}</span></div></div>
   </div>
   {% for w in pr.warnings %}<div class="notice warn">{{ w }}</div>{% endfor %}
   {% if pr.skills %}

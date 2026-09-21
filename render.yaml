@@ -1,0 +1,21 @@
+# Render Blueprint: one-click deploy. In Render choose New > Blueprint and select this repository.
+# The AI key is deliberately NOT listed here. Add ANTHROPIC_API_KEY later in the service's Environment tab if you want
+# the AI coach on; without it the site runs in rule-based mode.
+services:
+  - type: web
+    name: clearprep
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    # --proxy-headers / --forwarded-allow-ips make the app see each visitor's real address behind Render's proxy,
+    # which the per-visitor AI usage limits depend on.
+    startCommand: uvicorn web.app:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips='*'
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: AI_CALLS_PER_IP_PER_HOUR
+        value: "20"
+      - key: AI_CALLS_PER_HOUR_TOTAL
+        value: "60"
+      - key: AI_CALLS_PER_DAY_TOTAL
+        value: "150"
